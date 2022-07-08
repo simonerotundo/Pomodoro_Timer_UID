@@ -167,7 +167,6 @@ public class Controller implements Initializable {
 
 
 
-
     @FXML void showPreferences() {
 
         // controlla che le altre activity non siano visibili!
@@ -181,6 +180,5 @@ public class Controller implements Initializable {
     @FXML void setCustomAudio1() { ControllerHandler.getInstance().setSelectedAudioEffect(1); } // BELL
     @FXML void setCustomAudio2() { ControllerHandler.getInstance().setSelectedAudioEffect(2); } // BIRD
     @FXML void setCustomAudio3() { ControllerHandler.getInstance().setSelectedAudioEffect(3); } // DIGITAL
-
 
 }

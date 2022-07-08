@@ -16,10 +16,13 @@ public class SceneHandler {
         return instance;
     }
 
+
+    public Stage stage;
+    public Scene scene;
+
     public Stage getStage() {
         return stage;
     }
-
     public void setStage(Stage stage) {
         this.stage = stage;
     }
@@ -27,13 +30,9 @@ public class SceneHandler {
     public Scene getScene() {
         return scene;
     }
-
     public void setScene(Scene scene) {
         this.scene = scene;
     }
-
-    public Stage stage;
-    public Scene scene;
 
 
     public void init(Stage stage) throws IOException {

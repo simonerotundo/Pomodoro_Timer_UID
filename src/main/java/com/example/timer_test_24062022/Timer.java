@@ -28,18 +28,26 @@ public class Timer {
         return tempo.get();
     }
     public void setTempo(int tempo) {
-
-        // TODO: 29/06/2022 modificarla in base all'id e non in base ai secondi che gli mando
-
-        final int POMODORO = 25;
-        final int SBREAK   = 5;
-        final int LBREAK   = 15;
-
         this.tempo.set(tempo);
     }
-    private void decrement(){
+    private void decrementTempo(){
         tempo.set(tempo.get()-1);
     }
+
+
+
+    public SimpleIntegerProperty tempoDiConcentrazione = new SimpleIntegerProperty(0);
+    public SimpleIntegerProperty tempoDiConcentrazioneProperty() {
+        return tempoDiConcentrazione;
+    }
+    public int getTempoDiConcentrazione() {
+        return tempoDiConcentrazione.get();
+    }
+    public void setTempoDiConcentrazione(int tempoDiConcentrazione) {
+        this.tempoDiConcentrazione.set(tempoDiConcentrazione);
+    }
+    private void incrementTempoDiConcentrazione() { tempoDiConcentrazione.set(tempoDiConcentrazione.get()+1); }
+
 
 
     public void startTimer(){
@@ -49,7 +57,8 @@ public class Timer {
                 e -> {
 
                     if(tempo.get() > 0) {
-                        decrement();    // .. decrementa di un secondo
+                        decrementTempo();    // .. decrementa di un secondo
+                        if(ActivityHandler.getInstance().itIsAPomodoro()) { incrementTempoDiConcentrazione(); }
                     } // se il tempo non è ancora terminato ..
                     else {
 
