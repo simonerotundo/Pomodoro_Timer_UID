@@ -1,0 +1,203 @@
+/*
+COLOR SCHEME:
+
+main      -> #ff686b
+secondary -> #ffa69e
+*/
+
+
+
+.root {
+
+     main-color:          rgb(217, 85, 80);
+     secondary-color:     #f08080;
+
+     activity-button-oh:  #eb6859;
+
+     start-button-fill:   #ffffff;
+     start-button-border: #f2f2f2;
+
+
+     -fx-font-family: "Fira Code";
+     -fx-font-style: normal;
+     -fx-font-size: 14px;
+
+}
+
+
+
+/* MAIN */
+#main-container {
+
+     -fx-padding: 56px, 56px, 56px, 56px;
+     /*-fx-background-color: main-color;*/
+
+}
+
+/* LIGHT BOX */
+#light-box {
+     
+     -fx-background-color: secondary-color;
+     -fx-background-radius: 6px;
+     -fx-opacity: 1;
+
+     -fx-padding: 24 18 24 18;
+
+}
+#activity-button {
+
+     -fx-background-color: transparent;
+     -fx-text-fill:      white;
+     -fx-font-weight:      normal;
+
+}
+#activity-button:hover {
+/*
+     -fx-background-color: #000000;
+     -fx-opacity: 0.6;
+*/
+     
+
+}
+#timer-label {
+
+     -fx-font-weight: bold;
+     -fx-font-size: 75px;
+     
+     -fx-text-fill:   white;
+
+}
+#start-button {
+     
+     -fx-padding: 20 86 20 86;
+     -fx-border-width: 0 0 4 0;
+     -fx-background-radius: 3px;
+     
+
+     -fx-background-color: start-button-fill;
+     -fx-border-color:     start-button-border;
+
+     -fx-font-size:   18px;
+     -fx-text-fill:   main-color;
+     -fx-font-weight: bold;
+     
+}
+
+/* TIME TO FOCUS! */
+#pomodoro-label {
+
+     -fx-font-size: 14;
+     -fx-text-fill: #e7ecef;
+
+}
+#text-label {
+
+     -fx-font-size: 14;
+     -fx-text-fill: white;
+
+}
+
+
+/* PREFERENCES */
+#preferences-button {
+
+     -fx-background-color: transparent;
+     -fx-text-fill:      white;
+     -fx-font-weight:      normal;
+
+}
+#preferences-menu {
+
+     -fx-border-radius: 8px;
+     -fx-background-color: #dd6662;
+     -fx-text-fill:        white;
+     -fx-font-weight:      normal;
+
+     -fx-padding: 20 0 20 0;
+
+
+     
+     -fx-border-width: 1 1 1 1;
+     -fx-background-radius: 8px;
+     -fx-border-color: transparent;
+     
+
+}
+#timer-settings-label {
+
+     -fx-text-fill: white;
+
+}
+#menu-item {
+
+     -fx-text-fill: white;
+     -fx-padding: 8 24 8 24;
+     -fx-background-color: transparent;
+
+}
+
+#menu-item-separator {
+
+     -fx-background-color: #cccccc;
+     -fx-padding: .5 .5 .5 .5;
+
+     -fx-background-radius: 6px;
+     -fx-opacity: 1;
+     
+}
+
+
+/* CHECKBOX */
+
+.check-box {
+
+     -fx-text-fill: white;
+
+}
+.check-box:selected > .box {
+     /* background color for selected checkbox */
+     -fx-background-color: #9cd25b;
+}
+ 
+.check-box > .box {
+     /* background color of unselected checkbox */
+     -fx-background-color: #cccccc;
+}
+ 
+.check-box:selected > .box > .mark,
+.check-box:indeterminate  > .box > .mark {
+     /* modify mark color */
+     -fx-background-color: transparent;
+}
+
+
+/* MENU */
+.menu-button { 
+     -fx-background-color: white;
+
+     -fx-background-insets: 0, 1, 2;
+     -fx-background-radius: 0 6 6 6, 0 5 5 5, 0 4 4 4;
+}
+ .context-menu {
+
+     -fx-background-color: white;
+
+     -fx-background-insets: 0, 1, 2;
+     -fx-background-radius: 0 6 6 6, 0 5 5 5, 0 4 4 4;
+     -fx-padding: 0.333333em 0.083333em 0.666667em 0.083333em; /* 4 1 8 1 */
+}
+.menu-item:focused {
+     -fx-background-color: #f5f3f4;
+}
+.menu-item:focused .label {
+     -fx-text-fill: black;
+     -fx-font-weight: bold;
+}
+
+#preferences-separator-label {
+
+     -fx-font-weight: bold;
+     -fx-text-fill: white;
+     -fx-underline: true;
+
+}

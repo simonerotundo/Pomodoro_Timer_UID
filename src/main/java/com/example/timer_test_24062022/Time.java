@@ -1,19 +1,20 @@
 package com.example.timer_test_24062022;
 
-import javafx.scene.control.Label;
+public class Time {
 
-public class TimeLabelHandler {
-
-    public static void refresh(Label timerLabel) {
-
-        // Aggiorna il valore del Label utilizzanado un il formato MM:SS
-        timerLabel.setText(secondsToMinutesAndSeconds());
-
+    private static Time instance = null;
+    public static Time getInstance(){
+        if (instance==null)
+            instance = new Time();
+        return instance;
     }
-    public static String secondsToMinutesAndSeconds(){
+
+
+    public int secondsToMinutes(int seconds) { return seconds * 60; }
+    public String secondsToMinutesAndSeconds() {
 
         String formatted_MMSS = "";
-        int secondsElapsed = Timer.getSecondsElapsed();
+        int secondsElapsed = Timer.getInstance().getTempo();
         int minutesElapsed;
 
 
@@ -35,6 +36,6 @@ public class TimeLabelHandler {
         // Restituisce la stringa formattata correttamente
         return formatted_MMSS;
 
-    }
+    } // String formatter -> MM:SS
 
 }

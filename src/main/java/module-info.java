@@ -1,6 +1,7 @@
 module com.example.timer_test_24062022 {
     requires javafx.controls;
     requires javafx.fxml;
+    requires javafx.media;
 
 
     opens com.example.timer_test_24062022 to javafx.fxml;
