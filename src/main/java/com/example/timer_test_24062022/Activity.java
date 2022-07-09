@@ -62,7 +62,6 @@ public class Activity {
         if(ControllerHandler.getInstance().getTimerAlreadyStarted()) {
 
             boolean confirm = ActivityHandler.getInstance().showAlert();
-            System.out.println("Alert: " + confirm);
 
             if(confirm) {
 
@@ -84,7 +83,6 @@ public class Activity {
 
             ActivityHandler.getInstance().setCurrentActivity(ACTIVITY_ID);
 
-
             // Timer.getInstance().setTempo(Time.getInstance().secondsToMinutes(FOCUS_ACTIVITY_DURATION));
             Timer.getInstance().setTempo(SHORT_BREAK_TEST);   // TMP ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -101,7 +99,6 @@ public class Activity {
         if(ControllerHandler.getInstance().getTimerAlreadyStarted()) {
 
             boolean confirm = ActivityHandler.getInstance().showAlert();
-            System.out.println("Alert: " + confirm);
 
             if(confirm) {
 

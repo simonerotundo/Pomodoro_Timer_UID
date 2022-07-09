@@ -16,7 +16,7 @@ public class Controller implements Initializable {
 
         // UI Elements
         ControllerHandler.getInstance().timerLabelTextProperty().addListener( observable -> timerLabel.setText(ControllerHandler.getInstance().getTimerLabelText()) );
-        ControllerHandler.getInstance().startButtonTextProperty().addListener( observable -> startButton.setText(ControllerHandler.getInstance().getStartButtonText()) );
+        ControllerHandler.getInstance().startButtonTextProperty().addListener( observable -> startPauseButton.setText(ControllerHandler.getInstance().getStartButtonText()) );
         ControllerHandler.getInstance().numberOfPomodorosProperty().addListener( observable -> pomodoroLabel.setText("#" + ControllerHandler.getInstance().getNumberOfPomodoros()) );
 
 
@@ -32,17 +32,15 @@ public class Controller implements Initializable {
         ControllerHandler.getInstance().setAutoRunBreaks(autoRunDefault);
 
 
-
-
         // COLORI DINAMICI
         ActivityHandler.getInstance().currentActivityProperty().addListener( observable -> {
             if(ActivityHandler.getInstance().getCurrentActivity() == 1)      {
 
-                activityTextLabel.setText("Time to Focus!");
+                activityTextLabel.setText(LanguageHandler.getInstance().getTimeToFocusString());
 
                 baseAnchorPane.setStyle("-fx-background-color: #d95550; ");
                 mainAnchorPane.setStyle("-fx-background-color: #dd6662;");
-                startButton.setStyle("-fx-text-fill:           #d95550;");
+                startPauseButton.setStyle("-fx-text-fill:           #d95550;");
 
                 focusSwitchButton.setStyle("-fx-background-color: #000000; -fx-opacity: 0.6; -fx-font-weight: bold;");
                 shortBreakSwitchButton.setStyle("-fx-background-color: transparent;");
@@ -51,41 +49,53 @@ public class Controller implements Initializable {
                 preferencesButton.setStyle("-fx-background-color: #dd6662;");
                 preferencesVbox.setStyle("-fx-background-color: #dd6662;");
 
+                reportButton.setStyle("-fx-background-color: #dd6662;");
+                reportVbox.setStyle("-fx-background-color: #dd6662;");
+
 
             }
-            else if(ActivityHandler.getInstance().getCurrentActivity() == 2) {
+            else {
 
-                activityTextLabel.setText("Time for a Break!");
+                activityTextLabel.setText(LanguageHandler.getInstance().getTimeToBreakString());
 
-                baseAnchorPane.setStyle("-fx-background-color: #4c9195;");
-                mainAnchorPane.setStyle("-fx-background-color:  #5e9ca0");
-                startButton.setStyle("-fx-text-fill:           #4c9195;");
+                if(ActivityHandler.getInstance().getCurrentActivity() == 2) {
 
-                focusSwitchButton.setStyle("-fx-background-color: transparent;");
-                shortBreakSwitchButton.setStyle("-fx-background-color: #000000; -fx-opacity: 0.6; -fx-font-weight: bold;");
-                longBreakSwitchButton.setStyle("-fx-background-color: transparent;");
+                    baseAnchorPane.setStyle("-fx-background-color: #4c9195;");
+                    mainAnchorPane.setStyle("-fx-background-color:  #5e9ca0");
+                    startPauseButton.setStyle("-fx-text-fill:           #4c9195;");
 
-                preferencesButton.setStyle("-fx-background-color: #5e9ca0;");
-                preferencesVbox.setStyle("-fx-background-color: #5e9ca0;");
+                    focusSwitchButton.setStyle("-fx-background-color: transparent;");
+                    shortBreakSwitchButton.setStyle("-fx-background-color: #000000; -fx-opacity: 0.6; -fx-font-weight: bold;");
+                    longBreakSwitchButton.setStyle("-fx-background-color: transparent;");
+
+                    preferencesButton.setStyle("-fx-background-color: #5e9ca0;");
+                    preferencesVbox.setStyle("-fx-background-color: #5e9ca0;");
+
+                    reportButton.setStyle("-fx-background-color: #5e9ca0;");
+                    reportVbox.setStyle("-fx-background-color: #5e9ca0;");
+
+                }
+                else if(ActivityHandler.getInstance().getCurrentActivity() == 3) {
+
+                    baseAnchorPane.setStyle("-fx-background-color: #457ca3;");
+                    mainAnchorPane.setStyle("-fx-background-color:  #5889ac");
+                    startPauseButton.setStyle("-fx-text-fill:           #457ca3;");
+
+                    focusSwitchButton.setStyle("-fx-background-color: transparent;");
+                    shortBreakSwitchButton.setStyle("-fx-background-color: transparent;");
+                    longBreakSwitchButton.setStyle("-fx-background-color: #000000; -fx-opacity: 0.6; -fx-font-weight: bold;");
+
+                    preferencesButton.setStyle("-fx-background-color: #5889ac;");
+                    preferencesVbox.setStyle("-fx-background-color: #5889ac;");
+
+                    reportButton.setStyle("-fx-background-color: #5889ac;");
+                    reportVbox.setStyle("-fx-background-color: #5889ac;");
+
+                }
 
             }
-            else if(ActivityHandler.getInstance().getCurrentActivity() == 3) {
 
-                activityTextLabel.setText("Time for a Break!");
-
-                baseAnchorPane.setStyle("-fx-background-color: #457ca3;");
-                mainAnchorPane.setStyle("-fx-background-color:  #5889ac");
-                startButton.setStyle("-fx-text-fill:           #457ca3;");
-
-                focusSwitchButton.setStyle("-fx-background-color: transparent;");
-                shortBreakSwitchButton.setStyle("-fx-background-color: transparent;");
-                longBreakSwitchButton.setStyle("-fx-background-color: #000000; -fx-opacity: 0.6; -fx-font-weight: bold;");
-
-                preferencesButton.setStyle("-fx-background-color: #5889ac;");
-                preferencesVbox.setStyle("-fx-background-color: #5889ac;");
-
-            }
-        } );
+        });
 
 
         // default activity
@@ -94,16 +104,53 @@ public class Controller implements Initializable {
         // preferences test
         preferencesVbox.setVisible(false);
 
+        // preferences test
+        reportVbox.setVisible(false);
 
 
-        // TEST
+        // audio
         ControllerHandler.getInstance().selectedAudioEffectProperty().addListener( observable -> {
 
             audioEffectSelector.setText(Audio.getInstance().audioTitleArray[ControllerHandler.getInstance().getSelectedAudioEffect()]);
             Audio.getInstance().setAudio(ControllerHandler.getInstance().getSelectedAudioEffect());
 
         });
-        audioEffectSelector.setText("Default");
+        audioEffectSelector.setText(LanguageHandler.getInstance().getDefaultString());
+
+        reportFocusTime.setText(LanguageHandler.getInstance().getYouHaveFocusedForString() + " " + Timer.getInstance().getTempoConcentrazione() + " " + LanguageHandler.getInstance().getSecondsString());
+        Timer.getInstance().tempoConcentrazioneProperty().addListener( observable ->
+                reportFocusTime.setText(LanguageHandler.getInstance().getYouHaveFocusedForString() + " " + Timer.getInstance().getTempoConcentrazione() + " " + LanguageHandler.getInstance().getSecondsString())
+        );
+
+        reportBreakTime.setText(LanguageHandler.getInstance().getYouHaveRelaxedForString() + " " + Timer.getInstance().getTempoPausa() + " " + LanguageHandler.getInstance().getSecondsString());
+        Timer.getInstance().tempoPausaProperty().addListener( observable -> reportBreakTime.setText(LanguageHandler.getInstance().getYouHaveRelaxedForString() + " " + Timer.getInstance().getTempoPausa() + " " + LanguageHandler.getInstance().getSecondsString()) );
+
+
+
+        /* traduzione */
+        LanguageHandler.getInstance().preferredLanguageProperty().addListener( observable -> {
+
+            /* activity switches */
+            focusSwitchButton.setText(LanguageHandler.getInstance().getPomodoroString());
+            shortBreakSwitchButton.setText(LanguageHandler.getInstance().getShortBreakString());
+            longBreakSwitchButton.setText(LanguageHandler.getInstance().getLongBreakString());
+
+            /* start/pause button */
+            startPauseButton.setText(LanguageHandler.getInstance().getPlayPauseString(startPauseButton.getText()));
+
+            /* time to focus/break */
+            if(ActivityHandler.getInstance().itIsAPomodoro()) { activityTextLabel.setText(LanguageHandler.getInstance().getTimeToFocusString()); }
+            else if(ActivityHandler.getInstance().itIsBreak()) { LanguageHandler.getInstance().getTimeToBreakString(); }
+
+            /* preferences button */
+            preferencesButton.setText(LanguageHandler.getInstance().getPreferenceString());
+
+            /* report button */
+            reportButton.setText(LanguageHandler.getInstance().getReportString());
+
+        } );
+
+
 
     }
 
@@ -121,7 +168,7 @@ public class Controller implements Initializable {
     @FXML private Button longBreakSwitchButton;
 
     @FXML private Label timerLabel;
-    @FXML private Button startButton;
+    @FXML private Button startPauseButton;
     @FXML private Label pomodoroLabel;
     @FXML private Label activityTextLabel;
     @FXML private CheckBox audioEnableCheckbox;
@@ -130,6 +177,12 @@ public class Controller implements Initializable {
 
     @FXML private VBox preferencesVbox;
     @FXML private Button preferencesButton;
+
+    @FXML private VBox reportVbox;
+    @FXML private Button reportButton;
+    @FXML private Label reportFocusTime;
+    @FXML private Label reportBreakTime;
+
     @FXML private MenuButton audioEffectSelector;
 
 
@@ -167,18 +220,194 @@ public class Controller implements Initializable {
 
 
 
+    // Preferences and Report
     @FXML void showPreferences() {
 
-        // controlla che le altre activity non siano visibili!
-        if(preferencesVbox.isVisible()) { preferencesVbox.setVisible(false); SceneHandler.getInstance().getStage().setHeight(552); }
-        else { preferencesVbox.setVisible(true); SceneHandler.getInstance().getStage().setHeight(800); }
+        // PREFERENCES:OFF, REPORT:OFF
+        if(!preferencesVbox.isVisible() && !reportVbox.isVisible()) {
+
+            // COLORS
+            if(ActivityHandler.getInstance().getCurrentActivity() == 1) {
+
+                preferencesButton.setStyle("-fx-background-color: #dd6662; -fx-font-weight: bold; -fx-opacity: 1;");
+                reportButton.setStyle("-fx-background-color: #dd6662; -fx-font-weight: normal; -fx-opacity: 0.6;");
+
+            }
+            else if(ActivityHandler.getInstance().getCurrentActivity() == 2) {
+
+                preferencesButton.setStyle("-fx-background-color: #5e9ca0; -fx-font-weight: bold; -fx-opacity: 1;");
+                reportButton.setStyle("-fx-background-color: #5e9ca0; -fx-font-weight: normal; -fx-opacity: 0.6;");
+
+            }
+            else {
+
+                preferencesButton.setStyle("-fx-background-color: #5889ac; -fx-font-weight: bold; -fx-opacity: 1;");
+                reportButton.setStyle("-fx-background-color: #5889ac; -fx-font-weight: normal; -fx-opacity: 0.6;");
+
+            }
+
+
+
+            preferencesVbox.setVisible(true);
+            SceneHandler.getInstance().getStage().setHeight(800);
+
+        }
+
+        // PREFERENCES:OFF, REPORT ON
+        else if(!preferencesVbox.isVisible() && reportVbox.isVisible()) {
+
+            if(ActivityHandler.getInstance().getCurrentActivity() == 1) {
+
+                preferencesButton.setStyle("-fx-background-color: #dd6662; -fx-font-weight: bold; -fx-opacity: 1;");
+                reportButton.setStyle("-fx-background-color: #dd6662; -fx-font-weight: normal; -fx-opacity: 0.6;");
+
+            }
+            else if(ActivityHandler.getInstance().getCurrentActivity() == 2) {
+
+                preferencesButton.setStyle("-fx-background-color: #5e9ca0; -fx-font-weight: bold; -fx-opacity: 1;");
+                reportButton.setStyle("-fx-background-color: #5e9ca0; -fx-font-weight: normal; -fx-opacity: 0.6;");
+
+            }
+            else {
+
+                preferencesButton.setStyle("-fx-background-color: #5889ac; -fx-font-weight: bold; -fx-opacity: 1;");
+                reportButton.setStyle("-fx-background-color: #5889ac; -fx-font-weight: normal; -fx-opacity: 0.6;");
+
+            }
+
+
+            reportVbox.setVisible(false);
+            preferencesVbox.setVisible(true);
+
+        }
+
+        // PREFERENCES:ON, REPORT:OFF
+        else {
+
+            if(ActivityHandler.getInstance().getCurrentActivity() == 1) {
+
+                preferencesButton.setStyle("-fx-background-color: #dd6662; -fx-font-weight: normal; -fx-opacity: 1;");
+                reportButton.setStyle("-fx-background-color: #dd6662; -fx-font-weight: normal; -fx-opacity: 1;");
+
+            }
+            else if(ActivityHandler.getInstance().getCurrentActivity() == 2) {
+
+                preferencesButton.setStyle("-fx-background-color: #5e9ca0; -fx-font-weight: normal; -fx-opacity: 1;");
+                reportButton.setStyle("-fx-background-color: #5e9ca0; -fx-font-weight: normal; -fx-opacity: 1;");
+
+            }
+            else {
+
+                preferencesButton.setStyle("-fx-background-color: #5889ac; -fx-font-weight: normal; -fx-opacity: 1;");
+                reportButton.setStyle("-fx-background-color: #5889ac; -fx-font-weight: normal; -fx-opacity: 1;");
+
+            }
+
+            preferencesVbox.setVisible(false);
+            SceneHandler.getInstance().getStage().setHeight(552);
+
+        }
 
     }
+    @FXML void showReport() {
+
+        // REPORT:OFF, PREFERENCES:OFF
+        if(!reportVbox.isVisible() && !preferencesVbox.isVisible()) {
+
+            if(ActivityHandler.getInstance().getCurrentActivity() == 1) {
+
+                preferencesButton.setStyle("-fx-background-color: #dd6662; -fx-font-weight: normal; -fx-opacity: 0.6;");
+                reportButton.setStyle("-fx-background-color: #dd6662; -fx-font-weight: bold; -fx-opacity: 1;");
+
+            }
+            else if(ActivityHandler.getInstance().getCurrentActivity() == 2) {
+
+                preferencesButton.setStyle("-fx-background-color: #5e9ca0; -fx-font-weight: normal; -fx-opacity: 0.6;");
+                reportButton.setStyle("-fx-background-color: #5e9ca0; -fx-font-weight: bold; -fx-opacity: 1;");
+
+            }
+            else {
+
+                preferencesButton.setStyle("-fx-background-color: #5889ac; -fx-font-weight: normal; -fx-opacity: 0.6;");
+                reportButton.setStyle("-fx-background-color: #5889ac; -fx-font-weight: bold; -fx-opacity: 1;");
+
+            }
+
+            reportVbox.setVisible(true);
+            SceneHandler.getInstance().getStage().setHeight(800);
+
+        }
+
+        // REPORT:OFF, PREFERENCES ON
+        else if(!reportVbox.isVisible() && preferencesVbox.isVisible()) {
+
+            if(ActivityHandler.getInstance().getCurrentActivity() == 1) {
+
+                preferencesButton.setStyle("-fx-background-color: #dd6662; -fx-font-weight: normal; -fx-opacity: 0.6;");
+                reportButton.setStyle("-fx-background-color: #dd6662; -fx-font-weight: bold; -fx-opacity: 1;");
+
+            }
+            else if(ActivityHandler.getInstance().getCurrentActivity() == 2) {
+
+                preferencesButton.setStyle("-fx-background-color: #5e9ca0; -fx-font-weight: normal; -fx-opacity: 0.6;");
+                reportButton.setStyle("-fx-background-color: #5e9ca0; -fx-font-weight: bold; -fx-opacity: 1;");
+
+            }
+            else {
+
+                preferencesButton.setStyle("-fx-background-color: #5889ac; -fx-font-weight: normal; -fx-opacity: 0.6;");
+                reportButton.setStyle("-fx-background-color: #5889ac; -fx-font-weight: bold; -fx-opacity: 1;");
+
+            }
+
+            preferencesVbox.setVisible(false);
+            reportVbox.setVisible(true);
+
+        }
+
+        // REPORT:ON, PREFERENCES:OFF
+        else {
+
+            if(ActivityHandler.getInstance().getCurrentActivity() == 1) {
+
+                preferencesButton.setStyle("-fx-background-color: #dd6662; -fx-font-weight: normal; -fx-opacity: 1;");
+                reportButton.setStyle("-fx-background-color: #dd6662; -fx-font-weight: normal; -fx-opacity: 1;");
+
+            }
+            else if(ActivityHandler.getInstance().getCurrentActivity() == 2) {
+
+                preferencesButton.setStyle("-fx-background-color: #5e9ca0; -fx-font-weight: normal; -fx-opacity: 1;");
+                reportButton.setStyle("-fx-background-color: #5e9ca0; -fx-font-weight: normal; -fx-opacity: 1;");
+
+            }
+            else {
+
+                preferencesButton.setStyle("-fx-background-color: #5889ac; -fx-font-weight: normal; -fx-opacity: 1;");
+                reportButton.setStyle("-fx-background-color: #5889ac; -fx-font-weight: normal; -fx-opacity: 1;");
+
+            }
+
+            reportVbox.setVisible(false);
+            SceneHandler.getInstance().getStage().setHeight(552);
+            
+        }
+
+    }
+
+
+    // Audio effects
     @FXML void setDefaultAudio() {
         ControllerHandler.getInstance().setSelectedAudioEffect(0);
     } // DEFAULT - BELL
     @FXML void setCustomAudio1() { ControllerHandler.getInstance().setSelectedAudioEffect(1); } // BELL
     @FXML void setCustomAudio2() { ControllerHandler.getInstance().setSelectedAudioEffect(2); } // BIRD
     @FXML void setCustomAudio3() { ControllerHandler.getInstance().setSelectedAudioEffect(3); } // DIGITAL
+
+
+    @FXML void setPreferredLanguageEnglish() {
+        LanguageHandler.getInstance().setPreferredLanguage(EnglishDictionary.getInstance().LANGUAGE_ID);
+    }
+    @FXML void setPreferredLanguageItalian() { LanguageHandler.getInstance().setPreferredLanguage(ItalianDictionary.getInstance().LANGUAGE_ID); }
+
 
 }

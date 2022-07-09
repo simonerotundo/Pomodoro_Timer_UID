@@ -36,18 +36,32 @@ public class Timer {
 
 
 
-    public SimpleIntegerProperty tempoDiConcentrazione = new SimpleIntegerProperty(0);
-    public SimpleIntegerProperty tempoDiConcentrazioneProperty() {
-        return tempoDiConcentrazione;
+    // FOCUS TIME
+    public SimpleIntegerProperty tempoConcentrazione = new SimpleIntegerProperty(0);
+    public SimpleIntegerProperty tempoConcentrazioneProperty() {
+        return tempoConcentrazione;
     }
-    public int getTempoDiConcentrazione() {
-        return tempoDiConcentrazione.get();
+    public int getTempoConcentrazione() {
+        return tempoConcentrazione.get();
     }
-    public void setTempoDiConcentrazione(int tempoDiConcentrazione) {
-        this.tempoDiConcentrazione.set(tempoDiConcentrazione);
+    public void setTempoConcentrazione(int tempoConcentrazione) {
+        this.tempoConcentrazione.set(tempoConcentrazione);
     }
-    private void incrementTempoDiConcentrazione() { tempoDiConcentrazione.set(tempoDiConcentrazione.get()+1); }
+    private void incrementTempoConcentrazione() { tempoConcentrazione.set(tempoConcentrazione.get()+1); }
 
+
+    // BREAK TIME
+    public SimpleIntegerProperty tempoPausa = new SimpleIntegerProperty(0);
+    public SimpleIntegerProperty tempoPausaProperty() {
+        return tempoPausa;
+    }
+    public int getTempoPausa() {
+        return tempoPausa.get();
+    }
+    public void setTempoPausa(int tempoPausa) {
+        this.tempoPausa.set(tempoPausa);
+    }
+    private void incrementTempoPausa() { tempoPausa.set(tempoPausa.get()+1); }
 
 
     public void startTimer(){
@@ -58,7 +72,8 @@ public class Timer {
 
                     if(tempo.get() > 0) {
                         decrementTempo();    // .. decrementa di un secondo
-                        if(ActivityHandler.getInstance().itIsAPomodoro()) { incrementTempoDiConcentrazione(); }
+                        if(ActivityHandler.getInstance().itIsAPomodoro()) { incrementTempoConcentrazione(); }
+                        else { incrementTempoPausa(); }
                     } // se il tempo non è ancora terminato ..
                     else {
 

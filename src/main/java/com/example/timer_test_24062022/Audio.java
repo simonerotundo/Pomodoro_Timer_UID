@@ -19,10 +19,10 @@ public class Audio {
 
 
     // da dividere in NOME_PATH e NOME_NOME
-    String DEFAULT = "src/main/resources/Sounds/bell-default.wav";
-    String BELL = "src/main/resources/Sounds/small-bell-ringing-short-sound-effect.mp3";
-    String BIRD = "src/main/resources/Sounds/small-bird-chirp-sound-effect.mp3";
-    String DIGITAL = "src/main/resources/Sounds/warning-beeping-sound.mp3";
+    final String DEFAULT = "src/main/resources/Sounds/bell-default.wav";
+    final String BELL = "src/main/resources/Sounds/small-bell-ringing-short-sound-effect.mp3";
+    final String BIRD = "src/main/resources/Sounds/small-bird-chirp-sound-effect.mp3";
+    final String DIGITAL = "src/main/resources/Sounds/warning-beeping-sound.mp3";
 
     String audioTitleArray[] = { "Default", "Bell", "Bird", "Digital" };
     String audioPathArray[]  = {  DEFAULT,   BELL,   BIRD,   DIGITAL };

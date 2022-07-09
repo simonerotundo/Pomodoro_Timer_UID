@@ -1,6 +1,5 @@
 package com.example.timer_test_24062022;
 
-import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
@@ -36,8 +35,8 @@ public class SceneHandler {
 
 
     public void init(Stage stage) throws IOException {
-        this.stage=stage;
 
+        this.stage = stage;
 
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("home.fxml"));
         scene = new Scene(fxmlLoader.load(), 492, 552);
@@ -46,10 +45,9 @@ public class SceneHandler {
         stage.setResizable(true);
         scene.getStylesheets().add("/style.css");
 
-        // TODO: 04/07/2022 - QUANDO PREMO LA BARRA SPAZIATRICE, DEVE SIMULARE UN CLICK SU STARTBUTTON
         scene.setOnKeyPressed( e -> ControllerHandler.getInstance().shortcuts(e) );
 
-        stage.setTitle("Pomodoro Timer");
+        stage.setTitle(LanguageHandler.getInstance().APPLICATION_TITLE);
         stage.setScene(scene);
         stage.show();
 

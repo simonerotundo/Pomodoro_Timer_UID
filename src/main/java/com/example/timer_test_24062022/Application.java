@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+/* IMMAGINI PRESE DA https://www.flaticon.com/ */
 public class Application extends javafx.application.Application {
     @Override
     public void start(Stage stage) throws IOException {

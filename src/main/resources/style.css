@@ -114,6 +114,52 @@ secondary -> #ffa69e
      -fx-font-weight:      normal;
 
      -fx-padding: 20 0 20 0;
+     
+     -fx-border-width: 1 1 1 1;
+     -fx-background-radius: 8px;
+     -fx-border-color: transparent;
+     
+
+}
+#timer-settings-label {
+
+     -fx-text-fill: white;
+
+}
+#menu-item {
+
+     -fx-text-fill: white;
+     -fx-padding: 8 24 8 24;
+     -fx-background-color: transparent;
+
+}
+#menu-item-separator {
+
+     -fx-background-color: white;
+     -fx-padding: .5 .5 .5 .5;
+
+     -fx-background-radius: 6px;
+     -fx-opacity: 1;
+     
+}
+
+
+/* REPORT */
+#report-button {
+
+     -fx-background-color: transparent;
+     -fx-text-fill:      white;
+     -fx-font-weight:      normal;
+
+}
+#report-menu {
+
+     -fx-border-radius: 8px;
+     -fx-background-color: #dd6662;
+     -fx-text-fill:        white;
+     -fx-font-weight:      normal;
+
+     -fx-padding: 20 0 20 0;
 
 
      
@@ -135,39 +181,8 @@ secondary -> #ffa69e
      -fx-background-color: transparent;
 
 }
-
-#menu-item-separator {
-
-     -fx-background-color: #cccccc;
-     -fx-padding: .5 .5 .5 .5;
-
-     -fx-background-radius: 6px;
-     -fx-opacity: 1;
-     
-}
-
-
-/* CHECKBOX */
-
-.check-box {
-
+#focus-time-label, #break-time-label {
      -fx-text-fill: white;
-
-}
-.check-box:selected > .box {
-     /* background color for selected checkbox */
-     -fx-background-color: #9cd25b;
-}
- 
-.check-box > .box {
-     /* background color of unselected checkbox */
-     -fx-background-color: #cccccc;
-}
- 
-.check-box:selected > .box > .mark,
-.check-box:indeterminate  > .box > .mark {
-     /* modify mark color */
-     -fx-background-color: transparent;
 }
 
 
@@ -193,11 +208,31 @@ secondary -> #ffa69e
      -fx-text-fill: black;
      -fx-font-weight: bold;
 }
-
 #preferences-separator-label {
 
      -fx-font-weight: bold;
      -fx-text-fill: white;
-     -fx-underline: true;
 
+}
+
+
+/* CHECKBOX */
+
+.check-box {
+
+     -fx-text-fill: white;
+
+}
+.check-box:selected > .box {
+     /* background color for selected checkbox */
+     -fx-background-color: #9cd25b;
+}
+.check-box > .box {
+     /* background color of unselected checkbox */
+     -fx-background-color: #cccccc;
+}
+.check-box:selected > .box > .mark,
+.check-box:indeterminate  > .box > .mark {
+     /* modify mark color */
+     -fx-background-color: transparent;
 }

@@ -81,10 +81,10 @@ public class ControllerHandler {
         this.startButtonText.set(startButtonText);
     }
     public void updateStartButtonTextToStart() {
-        setStartButtonText("START");
+        setStartButtonText(LanguageHandler.getInstance().getStartTimerString());
     }
     public void updateStartButtonTextToPause() {
-        setStartButtonText("PAUSE");
+        setStartButtonText(LanguageHandler.getInstance().getPauseTimerString());
     }
     public void onStartTimerButton() {
 
@@ -161,7 +161,6 @@ public class ControllerHandler {
     public void onAutoRunBreaks(boolean autorunPreferences) {
         setAutoRunBreaks(autorunPreferences);
     }
-
 
 
 

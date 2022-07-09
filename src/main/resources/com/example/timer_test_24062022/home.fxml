@@ -8,6 +8,8 @@
 <?import javafx.scene.control.MenuButton?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -93,7 +95,7 @@
                                  <children>
                                     <StackPane layoutX="69.0" layoutY="25.0" prefHeight="85.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <Button id="start-button" fx:id="startButton" mnemonicParsing="false" onAction="#startTimerButtonOnClick" text="START">
+                                          <Button id="start-button" fx:id="startPauseButton" mnemonicParsing="false" onAction="#startTimerButtonOnClick" text="START">
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
@@ -160,130 +162,271 @@
             </VBox>
             <VBox alignment="CENTER" prefHeight="65.0" prefWidth="357.0">
                <children>
-                  <AnchorPane prefHeight="0.0" prefWidth="357.0">
+                  <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <StackPane prefHeight="200.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                        <AnchorPane prefHeight="0.0" prefWidth="357.0">
                            <children>
-                              <Button id="preferences-button" fx:id="preferencesButton" mnemonicParsing="false" onAction="#showPreferences" text="Preferences">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <StackPane.margin>
-                                    <Insets top="20.0" />
-                                 </StackPane.margin>
-                              </Button>
-                           </children>
-                        </StackPane>
-                     </children>
-                  </AnchorPane>
-                  <VBox id="preferences-menu" fx:id="preferencesVbox" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="300.0" prefWidth="400.0">
-                     <children>
-                        <AnchorPane id="menu-item" layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="357.0">
-                           <children>
-                              <StackPane prefHeight="200.0" prefWidth="220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
+                              <StackPane prefHeight="200.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <Label id="preferences-separator-label" text="Audio">
-                                       <StackPane.margin>
-                                          <Insets />
-                                       </StackPane.margin>
-                                       <font>
-                                          <Font name="System Bold Italic" size="13.0" />
-                                       </font>
-                                    </Label>
-                                 </children>
-                              </StackPane>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane id="menu-item" prefHeight="30.0" prefWidth="357.0">
-                           <children>
-                              <StackPane prefHeight="200.0" prefWidth="220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <CheckBox fx:id="audioEnableCheckbox" mnemonicParsing="false" onAction="#audioEnableCheckboxOnClick" prefHeight="18.0" prefWidth="200.0" text="Audio">
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor></CheckBox>
-                                 </children>
-                              </StackPane>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="357.0">
-                           <children>
-                              <StackPane layoutX="109.0" prefHeight="24.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <MenuButton fx:id="audioEffectSelector" mnemonicParsing="false" popupSide="RIGHT" prefHeight="22.0" prefWidth="200.0" text="MenuButton">
-                                      <items>
-                                        <MenuItem mnemonicParsing="false" onAction="#setDefaultAudio" text="Default" />
-                                          <SeparatorMenuItem mnemonicParsing="false" />
-                                        <MenuItem mnemonicParsing="false" onAction="#setCustomAudio1" text="Bell" />
-                                          <MenuItem mnemonicParsing="false" onAction="#setCustomAudio2" text="Bird" />
-                                          <MenuItem mnemonicParsing="false" onAction="#setCustomAudio3" text="Digital" />
-                                      </items>
-                                       <graphic>
-                                          <Label text="Set audio: " />
-                                       </graphic>
+                                    <Button id="preferences-button" fx:id="preferencesButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showPreferences" prefHeight="24.0" prefWidth="140.0" text="Preferences">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
                                        </cursor>
-                                    </MenuButton>
-                                 </children>
-                              </StackPane>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="30.0" prefWidth="357.0" visible="false">
-                           <children>
-                              <Pane id="menu-item-separator" layoutX="50.0" prefHeight="24.0" prefWidth="258.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="2.0" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane id="menu-item" layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="357.0">
-                           <children>
-                              <StackPane prefHeight="200.0" prefWidth="220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <Label id="preferences-separator-label" text="Functionals">
                                        <StackPane.margin>
-                                          <Insets top="10.0" />
+                                          <Insets top="20.0" />
                                        </StackPane.margin>
                                        <padding>
-                                          <Insets top="10.0" />
+                                          <Insets bottom="2.0" top="2.0" />
                                        </padding>
-                                       <font>
-                                          <Font name="System Bold Italic" size="13.0" />
-                                       </font>
-                                    </Label>
+                                    </Button>
                                  </children>
                               </StackPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane id="menu-item" prefHeight="30.0" prefWidth="357.0">
+                        <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="0.0" prefWidth="357.0">
                            <children>
-                              <StackPane prefHeight="200.0" prefWidth="220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
+                              <StackPane prefHeight="200.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
-                                    <CheckBox fx:id="autoRunPomodoro" mnemonicParsing="false" onAction="#autoRunPomodoroOnClick" prefHeight="22.0" prefWidth="200.0" text="AutoRun Pomodoro">
+                                    <Button id="report-button" fx:id="reportButton" alignment="CENTER" contentDisplay="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#showReport" prefHeight="24.0" prefWidth="140.0" text="Report">
                                        <cursor>
                                           <Cursor fx:constant="HAND" />
-                                       </cursor></CheckBox>
-                                 </children>
-                              </StackPane>
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane prefHeight="30.0" prefWidth="357.0" visible="false">
-                           <children>
-                              <Pane id="menu-item-separator" layoutX="50.0" prefHeight="24.0" prefWidth="258.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="2.0" />
-                           </children>
-                        </AnchorPane>
-                        <AnchorPane id="menu-item" prefHeight="30.0" prefWidth="357.0">
-                           <children>
-                              <StackPane prefHeight="200.0" prefWidth="220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
-                                 <children>
-                                    <CheckBox fx:id="autoRunBreaks" mnemonicParsing="false" onAction="#autoRunBreaksOnClick" prefHeight="18.0" prefWidth="200.0" text="AutoRun Breaks">
-                                       <cursor>
-                                          <Cursor fx:constant="HAND" />
-                                       </cursor></CheckBox>
+                                       </cursor>
+                                       <StackPane.margin>
+                                          <Insets top="20.0" />
+                                       </StackPane.margin>
+                                       <padding>
+                                          <Insets bottom="2.0" top="2.0" />
+                                       </padding>
+                                    </Button>
                                  </children>
                               </StackPane>
                            </children>
                         </AnchorPane>
                      </children>
-                  </VBox>
+                  </HBox>
+                  <StackPane prefHeight="150.0" prefWidth="200.0">
+                     <children>
+                        <VBox id="preferences-menu" fx:id="preferencesVbox" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="300.0" prefWidth="400.0">
+                           <children>
+                              <AnchorPane id="menu-item" layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="357.0">
+                                 <children>
+                                    <StackPane prefHeight="200.0" prefWidth="220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Label id="preferences-separator-label" text="Audio">
+                                             <StackPane.margin>
+                                                <Insets />
+                                             </StackPane.margin>
+                                             <font>
+                                                <Font name="System Bold Italic" size="13.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="30.0" prefWidth="357.0">
+                                 <children>
+                                    <Pane id="menu-item-separator" layoutX="50.0" prefHeight="24.0" prefWidth="258.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="2.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane id="menu-item" prefHeight="30.0" prefWidth="357.0">
+                                 <children>
+                                    <StackPane prefHeight="200.0" prefWidth="220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <CheckBox fx:id="audioEnableCheckbox" mnemonicParsing="false" onAction="#audioEnableCheckboxOnClick" prefHeight="18.0" prefWidth="200.0" text="Audio">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </CheckBox>
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="30.0" prefWidth="357.0">
+                                 <children>
+                                    <StackPane layoutX="109.0" prefHeight="24.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <MenuButton fx:id="audioEffectSelector" mnemonicParsing="false" popupSide="RIGHT" prefHeight="22.0" prefWidth="200.0" text="MenuButton">
+                                            <items>
+                                              <MenuItem mnemonicParsing="false" onAction="#setDefaultAudio" text="Default" />
+                                                <SeparatorMenuItem mnemonicParsing="false" />
+                                              <MenuItem mnemonicParsing="false" onAction="#setCustomAudio1" text="Bell" />
+                                                <MenuItem mnemonicParsing="false" onAction="#setCustomAudio2" text="Bird" />
+                                                <MenuItem mnemonicParsing="false" onAction="#setCustomAudio3" text="Digital" />
+                                            </items>
+                                             <graphic>
+                                                <Label text="Set audio: " />
+                                             </graphic>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </MenuButton>
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane id="menu-item" layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="357.0">
+                                 <children>
+                                    <StackPane prefHeight="200.0" prefWidth="220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Label id="preferences-separator-label" text="Functionals">
+                                             <StackPane.margin>
+                                                <Insets top="10.0" />
+                                             </StackPane.margin>
+                                             <padding>
+                                                <Insets top="10.0" />
+                                             </padding>
+                                             <font>
+                                                <Font name="System Bold Italic" size="13.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="30.0" prefWidth="357.0">
+                                 <children>
+                                    <Pane id="menu-item-separator" layoutX="50.0" prefHeight="24.0" prefWidth="258.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="2.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane id="menu-item" prefHeight="30.0" prefWidth="357.0">
+                                 <children>
+                                    <StackPane prefHeight="200.0" prefWidth="220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <CheckBox fx:id="autoRunPomodoro" mnemonicParsing="false" onAction="#autoRunPomodoroOnClick" prefHeight="22.0" prefWidth="200.0" text="AutoRun Pomodoro">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </CheckBox>
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane id="menu-item" prefHeight="30.0" prefWidth="357.0">
+                                 <children>
+                                    <StackPane prefHeight="200.0" prefWidth="220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <CheckBox fx:id="autoRunBreaks" mnemonicParsing="false" onAction="#autoRunBreaksOnClick" prefHeight="18.0" prefWidth="200.0" text="AutoRun Breaks">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </CheckBox>
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane id="menu-item" layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="357.0">
+                                 <children>
+                                    <StackPane prefHeight="200.0" prefWidth="220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Label id="preferences-separator-label" text="Language">
+                                             <StackPane.margin>
+                                                <Insets />
+                                             </StackPane.margin>
+                                             <font>
+                                                <Font name="System Bold Italic" size="13.0" />
+                                             </font>
+                                          </Label>
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="30.0" prefWidth="357.0">
+                                 <children>
+                                    <Pane id="menu-item-separator" layoutX="50.0" prefHeight="24.0" prefWidth="258.0" AnchorPane.bottomAnchor="2.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="2.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <StackPane prefHeight="150.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <HBox prefHeight="100.0" prefWidth="200.0">
+                                             <children>
+                                                <StackPane prefHeight="150.0" prefWidth="200.0">
+                                                   <children>
+                                                      <ImageView accessibleRole="BUTTON" fitHeight="53.0" fitWidth="40.0" onMouseClicked="#setPreferredLanguageEnglish" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../../Images/united-kingdom.png" />
+                                                         </image>
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
+                                                      </ImageView>
+                                                   </children>
+                                                </StackPane>
+                                                <StackPane prefHeight="150.0" prefWidth="200.0">
+                                                   <children>
+                                                      <ImageView accessibleRole="BUTTON" fitHeight="68.0" fitWidth="37.0" onMouseClicked="#setPreferredLanguageItalian" pickOnBounds="true" preserveRatio="true">
+                                                         <image>
+                                                            <Image url="@../../../Images/italy.png" />
+                                                         </image>
+                                                         <cursor>
+                                                            <Cursor fx:constant="HAND" />
+                                                         </cursor>
+                                                      </ImageView>
+                                                   </children>
+                                                </StackPane>
+                                             </children>
+                                          </HBox>
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </VBox>
+                        <VBox id="report-menu" fx:id="reportVbox" prefHeight="200.0" prefWidth="100.0" visible="false">
+                           <children>
+                              <AnchorPane id="menu-item" prefHeight="30.0" prefWidth="357.0">
+                                 <children>
+                                    <StackPane prefHeight="30.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Label id="preferences-separator-label" text="Focus and Break time">
+                                             <StackPane.margin>
+                                                <Insets />
+                                             </StackPane.margin>
+                                             <font>
+                                                <Font name="System Bold Italic" size="13.0" />
+                                             </font>
+                                             <padding>
+                                                <Insets top="21.0" />
+                                             </padding>
+                                          </Label>
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="4.0" prefWidth="357.0">
+                                 <children>
+                                    <Pane id="menu-item-separator" layoutX="50.0" prefHeight="4.0" prefWidth="197.0" AnchorPane.bottomAnchor="24.0" AnchorPane.leftAnchor="80.0" AnchorPane.rightAnchor="80.0" AnchorPane.topAnchor="2.0" />
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="20.0" prefWidth="357.0">
+                                 <children>
+                                    <StackPane prefHeight="37.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Label id="focus-time-label" fx:id="reportFocusTime" text="Focus time:" />
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane layoutX="10.0" layoutY="73.0" prefHeight="20.0" prefWidth="357.0">
+                                 <children>
+                                    <StackPane prefHeight="37.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                       <children>
+                                          <Label id="break-time-label" fx:id="reportBreakTime" text="Break time:" />
+                                       </children>
+                                    </StackPane>
+                                 </children>
+                              </AnchorPane>
+                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                 <children>
+                                    <StackPane prefHeight="150.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                 </children>
+                              </AnchorPane>
+                           </children>
+                        </VBox>
+                     </children>
+                  </StackPane>
                </children>
             </VBox>
          </children>

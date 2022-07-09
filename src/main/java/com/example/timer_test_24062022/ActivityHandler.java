@@ -1,7 +1,6 @@
 package com.example.timer_test_24062022;
 
 import javafx.beans.property.SimpleIntegerProperty;
-import com.example.timer_test_24062022.Activity;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
 
@@ -31,7 +30,10 @@ public class ActivityHandler {
     }
 
     public boolean itIsAPomodoro(){
-        return currentActivity.get() == 1;
+        return getCurrentActivity() == 1;
+    }
+    public boolean itIsBreak(){
+        return getCurrentActivity() == 2 || getCurrentActivity() == 3;
     }
 
     /* Passa all'attività successiva */
@@ -46,14 +48,14 @@ public class ActivityHandler {
             if(ControllerHandler.getInstance().getNumberOfPomodoros() % 4 == 0  &&  ControllerHandler.getInstance().getNumberOfPomodoros() > 0) {
 
                 // LONG BREAK
-                System.out.println("Next Activity LBREAK");
+                System.out.println(LanguageHandler.getInstance().NEXT_ACTIVITY + " " + LanguageHandler.getInstance().ACTIVITY_NAMES[3]);
                 Activity.getInstance().onLongBreakActivity();
 
             }
             else {
 
                 // SHORT BREAK
-                System.out.println("Next Activity SBREAK");
+                System.out.println(LanguageHandler.getInstance().NEXT_ACTIVITY + " " + LanguageHandler.getInstance().ACTIVITY_NAMES[2]);
                 Activity.getInstance().onShortBreakActivity();
 
             }
@@ -62,12 +64,10 @@ public class ActivityHandler {
         else if(ActivityHandler.getInstance().getCurrentActivity() == 2  ||  ActivityHandler.getInstance().getCurrentActivity() == 3) {
 
             // POMODORO
-            System.out.println("Next Activity POMODORO");
+            System.out.println(LanguageHandler.getInstance().NEXT_ACTIVITY + " " + LanguageHandler.getInstance().ACTIVITY_NAMES[1]);
             Activity.getInstance().onFocusActivity();
 
         }
-        else { /* TODO: 29/06/2022 TEST */ }
-
 
     }
 
@@ -75,7 +75,7 @@ public class ActivityHandler {
     public boolean showAlert() {
 
         Alert a = new Alert(Alert.AlertType.CONFIRMATION);
-        a.setContentText("Are you sure you want to interrupt the current activity?");
+        a.setContentText(LanguageHandler.getInstance().getAlertConfirmationString());
 
         Optional<ButtonType> choise = a.showAndWait();
         if(!choise.isPresent()){ return false; } // alert is exited, no button has been pressed.
