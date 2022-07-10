@@ -48,29 +48,23 @@ public class ActivityHandler {
             if(ControllerHandler.getInstance().getNumberOfPomodoros() % 4 == 0  &&  ControllerHandler.getInstance().getNumberOfPomodoros() > 0) {
 
                 // LONG BREAK
-                System.out.println(LanguageHandler.getInstance().NEXT_ACTIVITY + " " + LanguageHandler.getInstance().ACTIVITY_NAMES[2]);
+                System.out.println(LanguageHandler.getInstance().NEXT_ACTIVITY + " " + LanguageHandler.getInstance().ACTIVITY_NAMES[LanguageHandler.getInstance().LONG_BREAK_ID]);
                 Activity.getInstance().onLongBreakActivity();
 
             }
             else {
 
                 // SHORT BREAK
-                System.out.println(LanguageHandler.getInstance().NEXT_ACTIVITY + " " + LanguageHandler.getInstance().ACTIVITY_NAMES[1]);
+                System.out.println(LanguageHandler.getInstance().NEXT_ACTIVITY + " " + LanguageHandler.getInstance().ACTIVITY_NAMES[LanguageHandler.getInstance().SHORT_BREAK_ID]);
                 Activity.getInstance().onShortBreakActivity();
 
             }
 
         }
-        else if(ActivityHandler.getInstance().getCurrentActivity() == 2) {
+        else if(ActivityHandler.getInstance().getCurrentActivity() == 2 || ActivityHandler.getInstance().getCurrentActivity() == 3) {
 
             // POMODORO
-            System.out.println(LanguageHandler.getInstance().NEXT_ACTIVITY + " " + LanguageHandler.getInstance().ACTIVITY_NAMES[0]);
-            Activity.getInstance().onFocusActivity();
-
-        }
-        else if(ActivityHandler.getInstance().getCurrentActivity() == 3) {
-
-            System.out.println(LanguageHandler.getInstance().NEXT_ACTIVITY + " " + LanguageHandler.getInstance().ACTIVITY_NAMES[0]);
+            System.out.println(LanguageHandler.getInstance().NEXT_ACTIVITY + " " + LanguageHandler.getInstance().ACTIVITY_NAMES[LanguageHandler.getInstance().POMODORO_ID]);
             Activity.getInstance().onFocusActivity();
 
         }

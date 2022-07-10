@@ -160,7 +160,7 @@
                   </AnchorPane>
                </children>
             </VBox>
-            <VBox alignment="CENTER" prefHeight="65.0" prefWidth="357.0">
+            <VBox alignment="CENTER" prefHeight="65.0" prefWidth="357.0" VBox.vgrow="NEVER">
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
@@ -248,14 +248,14 @@
                                        <children>
                                           <MenuButton fx:id="audioEffectSelector" mnemonicParsing="false" popupSide="RIGHT" prefHeight="22.0" prefWidth="200.0" text="MenuButton">
                                             <items>
-                                              <MenuItem mnemonicParsing="false" onAction="#setDefaultAudio" text="Default" />
+                                              <MenuItem fx:id="defaultAudioMenuItem" mnemonicParsing="false" onAction="#setDefaultAudio" text="Default" />
                                                 <SeparatorMenuItem mnemonicParsing="false" />
-                                              <MenuItem mnemonicParsing="false" onAction="#setCustomAudio1" text="Bell" />
-                                                <MenuItem mnemonicParsing="false" onAction="#setCustomAudio2" text="Bird" />
-                                                <MenuItem mnemonicParsing="false" onAction="#setCustomAudio3" text="Digital" />
+                                              <MenuItem fx:id="bellAudioMenuItem" mnemonicParsing="false" onAction="#setCustomAudio1" text="Bell" />
+                                                <MenuItem fx:id="birdAudioMenuItem" mnemonicParsing="false" onAction="#setCustomAudio2" text="Bird" />
+                                                <MenuItem fx:id="digitalAudioMenuItem" mnemonicParsing="false" onAction="#setCustomAudio3" text="Digital" />
                                             </items>
                                              <graphic>
-                                                <Label text="Set audio: " />
+                                                <Label fx:id="setAudioMenuLabel" text="Set audio: " />
                                              </graphic>
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
@@ -269,7 +269,7 @@
                                  <children>
                                     <StackPane prefHeight="200.0" prefWidth="220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <Label id="preferences-separator-label" text="Functionals">
+                                          <Label id="preferences-separator-label" fx:id="functionalsMenuCategoryLabel" text="Functionals">
                                              <StackPane.margin>
                                                 <Insets top="10.0" />
                                              </StackPane.margin>
@@ -319,7 +319,7 @@
                                  <children>
                                     <StackPane prefHeight="200.0" prefWidth="220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <Label id="preferences-separator-label" text="Language">
+                                          <Label id="preferences-separator-label" fx:id="languageMenuCategoryLabel" text="Language">
                                              <StackPane.margin>
                                                 <Insets />
                                              </StackPane.margin>
@@ -338,33 +338,45 @@
                               </AnchorPane>
                               <AnchorPane prefHeight="200.0" prefWidth="200.0">
                                  <children>
-                                    <StackPane prefHeight="150.0" prefWidth="400.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <StackPane layoutX="114.0" prefHeight="40.0" prefWidth="277.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="20.0" AnchorPane.rightAnchor="20.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <HBox prefHeight="100.0" prefWidth="200.0">
+                                          <HBox prefHeight="100.0" prefWidth="233.0">
                                              <children>
-                                                <StackPane prefHeight="150.0" prefWidth="200.0">
+                                                <StackPane prefHeight="40.0" prefWidth="85.0" HBox.hgrow="ALWAYS">
                                                    <children>
-                                                      <ImageView accessibleRole="BUTTON" fitHeight="53.0" fitWidth="40.0" onMouseClicked="#setPreferredLanguageEnglish" pickOnBounds="true" preserveRatio="true">
+                                                      <ImageView accessibleRole="BUTTON" fitHeight="53.0" fitWidth="40.0" onMouseClicked="#setPreferredLanguageEnglish" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_RIGHT">
                                                          <image>
                                                             <Image url="@../../../Images/united-kingdom.png" />
                                                          </image>
                                                          <cursor>
                                                             <Cursor fx:constant="HAND" />
                                                          </cursor>
+                                                         <StackPane.margin>
+                                                            <Insets left="50.0" right="50.0" />
+                                                         </StackPane.margin>
                                                       </ImageView>
                                                    </children>
+                                                   <HBox.margin>
+                                                      <Insets top="14.0" />
+                                                   </HBox.margin>
                                                 </StackPane>
-                                                <StackPane prefHeight="150.0" prefWidth="200.0">
+                                                <StackPane prefHeight="40.0" prefWidth="76.0" HBox.hgrow="ALWAYS">
                                                    <children>
-                                                      <ImageView accessibleRole="BUTTON" fitHeight="68.0" fitWidth="37.0" onMouseClicked="#setPreferredLanguageItalian" pickOnBounds="true" preserveRatio="true">
+                                                      <ImageView accessibleRole="BUTTON" fitHeight="68.0" fitWidth="37.0" onMouseClicked="#setPreferredLanguageItalian" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
                                                          <image>
                                                             <Image url="@../../../Images/italy.png" />
                                                          </image>
                                                          <cursor>
                                                             <Cursor fx:constant="HAND" />
                                                          </cursor>
+                                                         <StackPane.margin>
+                                                            <Insets left="50.0" right="50.0" />
+                                                         </StackPane.margin>
                                                       </ImageView>
                                                    </children>
+                                                   <HBox.margin>
+                                                      <Insets top="14.0" />
+                                                   </HBox.margin>
                                                 </StackPane>
                                              </children>
                                           </HBox>
@@ -380,7 +392,7 @@
                                  <children>
                                     <StackPane prefHeight="30.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <Label id="preferences-separator-label" text="Focus and Break time">
+                                          <Label id="preferences-separator-label" fx:id="focusAndBreakTimeMenuCategoryLabel" text="Focus and Break time">
                                              <StackPane.margin>
                                                 <Insets />
                                              </StackPane.margin>

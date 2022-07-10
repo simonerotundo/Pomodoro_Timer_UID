@@ -111,19 +111,21 @@ public class Controller implements Initializable {
         // audio
         ControllerHandler.getInstance().selectedAudioEffectProperty().addListener( observable -> {
 
-            audioEffectSelector.setText(Audio.getInstance().audioTitleArray[ControllerHandler.getInstance().getSelectedAudioEffect()]);
+            audioEffectSelector.setText(Audio.getInstance().getAudioTitleByID(ControllerHandler.getInstance().getSelectedAudioEffect()));
             Audio.getInstance().setAudio(ControllerHandler.getInstance().getSelectedAudioEffect());
 
         });
         audioEffectSelector.setText(LanguageHandler.getInstance().getDefaultString());
 
-        reportFocusTime.setText(LanguageHandler.getInstance().getYouHaveFocusedForString() + " " + Timer.getInstance().getTempoConcentrazione() + " " + LanguageHandler.getInstance().getSecondsString());
+        reportFocusTime.setText(LanguageHandler.getInstance().getYouHaveFocusedForString() + " " + Timer.getInstance().getTempoConcentrazione() + " " + LanguageHandler.getInstance().getSecondsString(Timer.getInstance().getTempoConcentrazione()));
         Timer.getInstance().tempoConcentrazioneProperty().addListener( observable ->
-                reportFocusTime.setText(LanguageHandler.getInstance().getYouHaveFocusedForString() + " " + Timer.getInstance().getTempoConcentrazione() + " " + LanguageHandler.getInstance().getSecondsString())
+                reportFocusTime.setText(LanguageHandler.getInstance().getYouHaveFocusedForString() + " " + Timer.getInstance().getTempoConcentrazione() + " " + LanguageHandler.getInstance().getSecondsString(Timer.getInstance().getTempoConcentrazione()))
         );
 
-        reportBreakTime.setText(LanguageHandler.getInstance().getYouHaveRelaxedForString() + " " + Timer.getInstance().getTempoPausa() + " " + LanguageHandler.getInstance().getSecondsString());
-        Timer.getInstance().tempoPausaProperty().addListener( observable -> reportBreakTime.setText(LanguageHandler.getInstance().getYouHaveRelaxedForString() + " " + Timer.getInstance().getTempoPausa() + " " + LanguageHandler.getInstance().getSecondsString()) );
+        reportBreakTime.setText(LanguageHandler.getInstance().getYouHaveRelaxedForString() + " " + Timer.getInstance().getTempoPausa() + " " + LanguageHandler.getInstance().getSecondsString(Timer.getInstance().getTempoPausa()));
+        Timer.getInstance().tempoPausaProperty().addListener( observable -> reportBreakTime.setText(LanguageHandler.getInstance().getYouHaveRelaxedForString() + " " + Timer.getInstance().getTempoPausa() + " " + LanguageHandler.getInstance().getSecondsString(Timer.getInstance().getTempoPausa())) );
+
+
 
 
 
@@ -142,13 +144,28 @@ public class Controller implements Initializable {
             if(ActivityHandler.getInstance().itIsAPomodoro()) { activityTextLabel.setText(LanguageHandler.getInstance().getTimeToFocusString()); }
             else if(ActivityHandler.getInstance().itIsBreak()) { LanguageHandler.getInstance().getTimeToBreakString(); }
 
-            /* preferences button */
+            /* preferences */
             preferencesButton.setText(LanguageHandler.getInstance().getPreferenceString());
+            audioEnableCheckbox.setText(LanguageHandler.getInstance().getAudioString());
+            setAudioMenuLabel.setText(LanguageHandler.getInstance().getSetAudioString() + ": ");
+            functionalsMenuCategoryLabel.setText(LanguageHandler.getInstance().getFunctionalString());
+            autoRunPomodoro.setText(LanguageHandler.getInstance().getAutoRunPomodoroString());
+            autoRunBreaks.setText(LanguageHandler.getInstance().getAutoRunBreaksString());
+            languageMenuCategoryLabel.setText(LanguageHandler.getInstance().getLanguageString());
+            defaultAudioMenuItem.setText(LanguageHandler.getInstance().getAudioStringByID(0));
+            bellAudioMenuItem.setText(LanguageHandler.getInstance().getAudioStringByID(1));
+            birdAudioMenuItem.setText(LanguageHandler.getInstance().getAudioStringByID(2));
+            digitalAudioMenuItem.setText(LanguageHandler.getInstance().getAudioStringByID(3));
 
             /* report button */
             reportButton.setText(LanguageHandler.getInstance().getReportString());
+            focusAndBreakTimeMenuCategoryLabel.setText(LanguageHandler.getInstance().getFocusAndBreakTimeString());
+            reportFocusTime.setText(LanguageHandler.getInstance().getYouHaveFocusedForString() + " " + Timer.getInstance().getTempoConcentrazione() + " " + LanguageHandler.getInstance().getSecondsString(Timer.getInstance().getTempoPausa()));
+            reportBreakTime.setText(LanguageHandler.getInstance().getYouHaveRelaxedForString() + " " + Timer.getInstance().getTempoPausa() + " " + LanguageHandler.getInstance().getSecondsString(Timer.getInstance().getTempoPausa()));
 
         } );
+
+
 
 
 
@@ -172,18 +189,28 @@ public class Controller implements Initializable {
     @FXML private Label pomodoroLabel;
     @FXML private Label activityTextLabel;
     @FXML private CheckBox audioEnableCheckbox;
+
+
+    @FXML private Label functionalsMenuCategoryLabel;
     @FXML private CheckBox autoRunPomodoro;
     @FXML private CheckBox autoRunBreaks;
+    @FXML private Label languageMenuCategoryLabel;
 
     @FXML private VBox preferencesVbox;
     @FXML private Button preferencesButton;
 
     @FXML private VBox reportVbox;
     @FXML private Button reportButton;
+    @FXML private Label focusAndBreakTimeMenuCategoryLabel;
     @FXML private Label reportFocusTime;
     @FXML private Label reportBreakTime;
 
     @FXML private MenuButton audioEffectSelector;
+    @FXML private Label setAudioMenuLabel;
+    @FXML private MenuItem defaultAudioMenuItem;
+    @FXML private MenuItem bellAudioMenuItem;
+    @FXML private MenuItem birdAudioMenuItem;
+    @FXML private MenuItem digitalAudioMenuItem;
 
 
 
@@ -249,7 +276,7 @@ public class Controller implements Initializable {
 
 
             preferencesVbox.setVisible(true);
-            SceneHandler.getInstance().getStage().setHeight(800);
+            SceneHandler.getInstance().getStage().setHeight(SceneHandler.getInstance().getStage().getMaxHeight());
 
         }
 
@@ -304,7 +331,7 @@ public class Controller implements Initializable {
             }
 
             preferencesVbox.setVisible(false);
-            SceneHandler.getInstance().getStage().setHeight(552);
+            SceneHandler.getInstance().getStage().setHeight(SceneHandler.getInstance().getStage().getMinHeight());
 
         }
 
@@ -334,7 +361,7 @@ public class Controller implements Initializable {
             }
 
             reportVbox.setVisible(true);
-            SceneHandler.getInstance().getStage().setHeight(800);
+            SceneHandler.getInstance().getStage().setHeight(SceneHandler.getInstance().getStage().getMaxHeight());
 
         }
 
@@ -388,7 +415,7 @@ public class Controller implements Initializable {
             }
 
             reportVbox.setVisible(false);
-            SceneHandler.getInstance().getStage().setHeight(552);
+            SceneHandler.getInstance().getStage().setHeight(SceneHandler.getInstance().getStage().getMinHeight());
             
         }
 

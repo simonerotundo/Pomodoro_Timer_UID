@@ -24,10 +24,27 @@ public class Audio {
     final String BIRD = "src/main/resources/Sounds/small-bird-chirp-sound-effect.mp3";
     final String DIGITAL = "src/main/resources/Sounds/warning-beeping-sound.mp3";
 
-    String audioTitleArray[] = { "Default", "Bell", "Bird", "Digital" };
-    String audioPathArray[]  = {  DEFAULT,   BELL,   BIRD,   DIGITAL };
 
+    private String audioPathArray[]  = {  DEFAULT, BELL, BIRD, DIGITAL };
+    private String audioTitleArray[] = LanguageHandler.getInstance().getAudioArrayString();
+    public String getAudioTitleByID(int index) {
 
+        switch(index) {
+
+            case 0:
+                return audioTitleArray[0];
+            case 1:
+                return audioTitleArray[1];
+            case 2:
+                return audioTitleArray[2];
+            case 3:
+                return audioTitleArray[3];
+
+        }
+
+        return "?";
+
+    }
 
     // DEFAULT AUDIO EFFECT
     String path = DEFAULT;

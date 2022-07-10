@@ -34,6 +34,14 @@ public class ItalianDictionary {
 
     /* Preference */
     final String PREFERENCES = "Preferenze";
+    final String AUDIO = "Audio";
+    final String SET_AUDIO = "Seleziona";
+    final String AUTORUN_POMODORO = "Avvia sempre pomodoro";
+    final String AUTORUN_BREAKS = "Avvia sempre le pause";
+    final String FUNCTIONALS = "Funzionali";
+    final String LANGUAGE = "Lingua";
+
+
 
     /* Report */
     final String REPORT = "Dati";
@@ -51,8 +59,12 @@ public class ItalianDictionary {
     final String HOUR = "ora";
     final String HOURS = "ore";
 
-    /* Audio */
+    /* Default */
     final String DEFAULT_STRING = "Predefinito";
-    final String AUDIO = "Audio";
+
+    /* Audio */
+    final String BELL_STRING = "Campanella";
+    final String BIRD_STRING = "Uccellino";
+    final String DIGITAL_STRING = "Digitale";
 
 }

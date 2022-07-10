@@ -34,14 +34,20 @@ public class SceneHandler {
     }
 
 
+    private final int MIN_WIDTH = 492, MIN_HEIGHT = 552;
+    private final int MAX_WIDTH = 740, MAX_HEIGHT = 880;
+    private final int DEFAULT_WIDTH = MIN_WIDTH, DEFAULT_HEIGH = MIN_HEIGHT;
+
+
+
     public void init(Stage stage) throws IOException {
 
         this.stage = stage;
 
         FXMLLoader fxmlLoader = new FXMLLoader(Application.class.getResource("home.fxml"));
-        scene = new Scene(fxmlLoader.load(), 492, 552);
-        stage.setMinWidth(492); stage.setMinHeight(552);
-        stage.setMaxWidth(740); stage.setMaxHeight(800);
+        scene = new Scene(fxmlLoader.load(), DEFAULT_WIDTH, DEFAULT_HEIGH);
+        stage.setMinWidth(MIN_WIDTH); stage.setMinHeight(MIN_HEIGHT);
+        stage.setMaxWidth(MAX_WIDTH); stage.setMaxHeight(MAX_HEIGHT);
         stage.setResizable(true);
         scene.getStylesheets().add("/style.css");
 

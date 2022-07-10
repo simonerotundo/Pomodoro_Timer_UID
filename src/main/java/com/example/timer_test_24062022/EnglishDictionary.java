@@ -21,8 +21,6 @@ public class EnglishDictionary {
     final String LONG_BREAK = "Long Break";
 
 
-
-
     /* Alert */
     final String ASK_FOR_CONFIRM = "Are you sure you want to interrupt the current activity?";
 
@@ -34,8 +32,16 @@ public class EnglishDictionary {
     final String TIME_TO_FOCUS = "Time to focus!";
     final String TIME_TO_BREAK = "Time for a break!";
 
-    /* Preference */
+    /* Preferences */
     final String PREFERENCES = "Preferences";
+    final String AUDIO = "Audio";
+    final String SET_AUDIO = "Set audio";
+    final String AUTORUN_POMODORO = "Autostart Pomodoro";
+    final String AUTORUN_BREAKS = "Autostart Breaks";
+    final String FUNCTIONALS = "Functionals";
+    final String LANGUAGE = "Language";
+
+
 
     /* Report */
     final String REPORT = "Report";
@@ -53,8 +59,12 @@ public class EnglishDictionary {
     final String HOUR = "hour";
     final String HOURS = "hours";
 
-    /* Audio */
+    /* Default */
     final String DEFAULT_STRING = "Default";
-    final String AUDIO = "Audio";
+
+    /* Audio */
+    final String BELL_STRING = "Bell";
+    final String BIRD_STRING = "Bird";
+    final String DIGITAL_STRING = "Digital";
 
 }

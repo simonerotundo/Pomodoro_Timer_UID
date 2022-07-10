@@ -36,7 +36,10 @@ public class LanguageHandler {
     final String EMPTY_STRING = "";
 
     /* Debug */
-    final String NEXT_ACTIVITY = "Next activity: ";
+    final int POMODORO_ID = 0;
+    final int SHORT_BREAK_ID = 1;
+    final int LONG_BREAK_ID = 2;
+    final String NEXT_ACTIVITY = "Starting ";
     final String ACTIVITY_NAMES[] = { "Pomodoro", "Short Break", "Long Break" };
 
 
@@ -138,7 +141,96 @@ public class LanguageHandler {
         return EnglishDictionary.getInstance().PREFERENCES;
 
     }
-    // TODO: 09/07/2022 - ne mancano la metà lol
+    public String getAudioString() {
+
+        if(getPreferredLanguage() == ItalianDictionary.getInstance().LANGUAGE_ID) {
+
+            return ItalianDictionary.getInstance().AUDIO;
+
+        }
+
+        return EnglishDictionary.getInstance().AUDIO;
+
+    }
+    public String getSetAudioString() {
+
+        if(getPreferredLanguage() == ItalianDictionary.getInstance().LANGUAGE_ID) {
+
+            return ItalianDictionary.getInstance().SET_AUDIO;
+
+        }
+
+        return EnglishDictionary.getInstance().SET_AUDIO;
+
+    }
+    public String[] getAudioArrayString() {
+
+        String[] audioTitles = new String[4];
+
+        if(getPreferredLanguage() == ItalianDictionary.getInstance().LANGUAGE_ID) {
+
+            audioTitles[0] = ItalianDictionary.getInstance().DEFAULT_STRING;
+            audioTitles[1] = ItalianDictionary.getInstance().BELL_STRING;
+            audioTitles[2] = ItalianDictionary.getInstance().BIRD_STRING;
+            audioTitles[3] = ItalianDictionary.getInstance().DIGITAL_STRING;
+
+        }
+        else {
+
+            audioTitles[0] = EnglishDictionary.getInstance().DEFAULT_STRING;
+            audioTitles[1] = EnglishDictionary.getInstance().BELL_STRING;
+            audioTitles[2] = EnglishDictionary.getInstance().BIRD_STRING;
+            audioTitles[3] = EnglishDictionary.getInstance().DIGITAL_STRING;
+
+        }
+
+
+        return audioTitles;
+
+    }
+    public String getAudioStringByID(int id) {
+        String[] titles = getAudioArrayString();
+        return titles[id];
+    }
+    public String getAutoRunPomodoroString() {
+
+        if(getPreferredLanguage() == ItalianDictionary.getInstance().LANGUAGE_ID) {
+            return ItalianDictionary.getInstance().AUTORUN_POMODORO;
+        }
+
+        return EnglishDictionary.getInstance().AUTORUN_POMODORO;
+
+    }
+    public String getAutoRunBreaksString() {
+
+        if(getPreferredLanguage() == ItalianDictionary.getInstance().LANGUAGE_ID) {
+            return ItalianDictionary.getInstance().AUTORUN_BREAKS;
+        }
+
+        return EnglishDictionary.getInstance().AUTORUN_BREAKS;
+
+    }
+    public String getFunctionalString() {
+
+        if(getPreferredLanguage() == ItalianDictionary.getInstance().LANGUAGE_ID) {
+            return ItalianDictionary.getInstance().FUNCTIONALS;
+        }
+
+        return EnglishDictionary.getInstance().FUNCTIONALS;
+
+    }
+    public String getLanguageString() {
+
+        if(getPreferredLanguage() == ItalianDictionary.getInstance().LANGUAGE_ID) {
+            return ItalianDictionary.getInstance().LANGUAGE;
+        }
+
+        return EnglishDictionary.getInstance().LANGUAGE;
+
+    }
+
+
+
 
     /* report */
     public String getReportString() {
@@ -148,6 +240,15 @@ public class LanguageHandler {
         }
 
         return EnglishDictionary.getInstance().REPORT;
+
+    }
+    public String getFocusAndBreakTimeString() {
+
+        if(getPreferredLanguage() == ItalianDictionary.getInstance().LANGUAGE_ID) {
+            return ItalianDictionary.getInstance().REPORT_SECTION_TITLE;
+        }
+
+        return EnglishDictionary.getInstance().REPORT_SECTION_TITLE;
 
     }
     public String getYouHaveFocusedForString() {
@@ -180,62 +281,23 @@ public class LanguageHandler {
     }
 
     /* measurement units */
-    public String getSecondString() {
-
-        if(getPreferredLanguage() == ItalianDictionary.getInstance().LANGUAGE_ID) {
-            return ItalianDictionary.getInstance().SECOND;
-        }
-
-        return EnglishDictionary.getInstance().SECOND;
-
+    public String getTimeUnitsString(int seconds) { // TODO: 10/07/2022 se il tempo è superiore ad un minuto, mi restituisce il tempo in minuti (da fare anche con le ore)
+        return "";        
     }
-    public String getSecondsString() {
+    public String getSecondsString(int seconds) {
 
         if(getPreferredLanguage() == ItalianDictionary.getInstance().LANGUAGE_ID) {
+
+            if(seconds == 1) { return ItalianDictionary.getInstance().SECOND; }
             return ItalianDictionary.getInstance().SECONDS;
         }
 
+        if(seconds == 1) { return EnglishDictionary.getInstance().SECOND; }
         return EnglishDictionary.getInstance().SECONDS;
 
     }
 
-    public String getMinuteString() {
 
-        if(getPreferredLanguage() == ItalianDictionary.getInstance().LANGUAGE_ID) {
-            return ItalianDictionary.getInstance().MINUTE;
-        }
-
-        return EnglishDictionary.getInstance().MINUTE;
-
-    }
-    public String getMiinutesString() {
-
-        if(getPreferredLanguage() == ItalianDictionary.getInstance().LANGUAGE_ID) {
-            return ItalianDictionary.getInstance().MINUTES;
-        }
-
-        return EnglishDictionary.getInstance().MINUTES;
-
-    }
-
-    public String getHourString() {
-
-        if(getPreferredLanguage() == ItalianDictionary.getInstance().LANGUAGE_ID) {
-            return ItalianDictionary.getInstance().HOUR;
-        }
-
-        return EnglishDictionary.getInstance().HOUR;
-
-    }
-    public String getHoursString() {
-
-        if(getPreferredLanguage() == ItalianDictionary.getInstance().LANGUAGE_ID) {
-            return ItalianDictionary.getInstance().HOURS;
-        }
-
-        return EnglishDictionary.getInstance().HOURS;
-
-    }
 
 
     /* alert */
