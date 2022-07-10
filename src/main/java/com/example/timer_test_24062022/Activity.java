@@ -99,16 +99,15 @@ public class Activity {
         if(ControllerHandler.getInstance().getTimerAlreadyStarted()) {
 
             boolean confirm = ActivityHandler.getInstance().showAlert();
-
             if(confirm) {
 
-                ActivityHandler.getInstance().setCurrentActivity(1);
+                ActivityHandler.getInstance().setCurrentActivity(3);
                 Timer.getInstance().pauseTimer();
                 ControllerHandler.getInstance().setTimerAlreadyStarted(false);
 
 
                 // Timer.getInstance().setTempo(Time.getInstance().secondsToMinutes(FOCUS_ACTIVITY_DURATION));
-                Timer.getInstance().setTempo(FOCUS_TEST);   // TMP ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                Timer.getInstance().setTempo(LONG_BREAK_TEST);   // TMP ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
                 ControllerHandler.getInstance().updateTimerLabelText(); // 1 - una funzione che setta questo (oppure fare direttamente il setTempo)
                 ControllerHandler.getInstance().updateStartButtonTextToStart();
