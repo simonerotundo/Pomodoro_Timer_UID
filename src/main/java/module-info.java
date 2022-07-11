@@ -4,6 +4,6 @@ module com.example.timer_test_24062022 {
     requires javafx.media;
 
 
-    opens com.example.timer_test_24062022 to javafx.fxml;
-    exports com.example.timer_test_24062022;
+    opens com.example.PomodoroTimer_UID to javafx.fxml;
+    exports com.example.PomodoroTimer_UID;
 }

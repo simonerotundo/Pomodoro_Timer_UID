@@ -66,7 +66,7 @@
                         <id>default-cli</id>
                         <configuration>
                             <mainClass>
-                                com.example.timer_test_24062022/com.example.timer_test_24062022.Application
+                                com.example.timer_test_24062022/com.example.PomodoroTimer_UID.Application
                             </mainClass>
                             <launcher>app</launcher>
                             <jlinkZipName>app</jlinkZipName>

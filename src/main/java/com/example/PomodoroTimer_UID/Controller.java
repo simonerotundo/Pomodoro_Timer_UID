@@ -1,4 +1,4 @@
-package com.example.timer_test_24062022;
+package com.example.PomodoroTimer_UID;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -20,27 +20,27 @@ public class Controller implements Initializable {
         ControllerHandler.getInstance().numberOfPomodorosProperty().addListener( observable -> pomodoroLabel.setText("#" + ControllerHandler.getInstance().getNumberOfPomodoros()) );
 
 
-        /* preferences */
+        /* Set the default preferences */
         boolean audioEnableDefault = true;
-        boolean autoRunDefault = false;
-
         audioEnableCheckbox.setSelected(audioEnableDefault);
-        autoRunPomodoro.setSelected(autoRunDefault);
-        autoRunBreaks.setSelected(autoRunDefault);
 
+        boolean autoRunDefault = false;
         ControllerHandler.getInstance().setAutoRunPomodoro(autoRunDefault);
         ControllerHandler.getInstance().setAutoRunBreaks(autoRunDefault);
 
 
-        // COLORI DINAMICI
+        /* Set listener in order to dynamically switch colors and texts */
         ActivityHandler.getInstance().currentActivityProperty().addListener( observable -> {
+
+            // If Pomodoro is selected ..
             if(ActivityHandler.getInstance().getCurrentActivity() == 1)      {
 
-                activityTextLabel.setText(LanguageHandler.getInstance().getTimeToFocusString());
+                activityTextLabel.setText(LanguageHandler.getInstance().getTimeToFocusString());    // .. text will switch to something like "Time to focus!"
 
+                /* Style the main UI Elements */
                 baseAnchorPane.setStyle("-fx-background-color: #d95550; ");
                 mainAnchorPane.setStyle("-fx-background-color: #dd6662;");
-                startPauseButton.setStyle("-fx-text-fill:           #d95550;");
+                startPauseButton.setStyle("-fx-text-fill:      #d95550;");
 
                 focusSwitchButton.setStyle("-fx-background-color: #000000; -fx-opacity: 0.6; -fx-font-weight: bold;");
                 shortBreakSwitchButton.setStyle("-fx-background-color: transparent;");
@@ -54,12 +54,16 @@ public class Controller implements Initializable {
 
 
             }
+
+            // If not (Short Break or Long Break is selected) ..
             else {
 
-                activityTextLabel.setText(LanguageHandler.getInstance().getTimeToBreakString());
+                activityTextLabel.setText(LanguageHandler.getInstance().getTimeToBreakString());    // .. text will switch to something like "Time for a Break!"
 
+                // If Short Break is selected ..
                 if(ActivityHandler.getInstance().getCurrentActivity() == 2) {
 
+                    /* Style the main UI Elements */
                     baseAnchorPane.setStyle("-fx-background-color: #4c9195;");
                     mainAnchorPane.setStyle("-fx-background-color:  #5e9ca0");
                     startPauseButton.setStyle("-fx-text-fill:           #4c9195;");
@@ -75,8 +79,11 @@ public class Controller implements Initializable {
                     reportVbox.setStyle("-fx-background-color: #5e9ca0;");
 
                 }
+
+                // If Long Break is selected ..
                 else if(ActivityHandler.getInstance().getCurrentActivity() == 3) {
 
+                    /* Style the main UI Elements */
                     baseAnchorPane.setStyle("-fx-background-color: #457ca3;");
                     mainAnchorPane.setStyle("-fx-background-color:  #5889ac");
                     startPauseButton.setStyle("-fx-text-fill:           #457ca3;");
@@ -98,37 +105,38 @@ public class Controller implements Initializable {
         });
 
 
-        // default activity
+        /* Set Pomodoro as the default activity */
         Activity.getInstance().onFocusActivity();
 
-        // preferences test
-        preferencesVbox.setVisible(false);
 
-        // preferences test
+        /* Hide "Preferences" and "Report" menus by default */
+        preferencesVbox.setVisible(false);
         reportVbox.setVisible(false);
 
 
-        // audio
+        /* Set listener in order to manage the change of the audio effect  */
         ControllerHandler.getInstance().selectedAudioEffectProperty().addListener( observable -> {
 
-            audioEffectSelector.setText(Audio.getInstance().getAudioTitleByID(ControllerHandler.getInstance().getSelectedAudioEffect()));
-            Audio.getInstance().setAudio(ControllerHandler.getInstance().getSelectedAudioEffect());
+            audioEffectSelector.setText(Audio.getInstance().getAudioTitleByID(ControllerHandler.getInstance().getSelectedAudioEffect()));   // set the title of the selected audio effect in the MenuButton element
+            Audio.getInstance().setAudio(ControllerHandler.getInstance().getSelectedAudioEffect());                                         // set selected audio effect
 
         });
-        audioEffectSelector.setText(LanguageHandler.getInstance().getDefaultString());
+        audioEffectSelector.setText(LanguageHandler.getInstance().getDefaultString());  // set the selected audio effect label with the default audio effect title
 
+
+        /* Set the focus time label located in the report menu */
         reportFocusTime.setText(LanguageHandler.getInstance().getYouHaveFocusedForString() + Time.getInstance().secondsToHoursMinutesSeconds(Timer.getInstance().getTempoConcentrazione()) + ".");
         Timer.getInstance().tempoConcentrazioneProperty().addListener( observable ->
                 reportFocusTime.setText(LanguageHandler.getInstance().getYouHaveFocusedForString() + Time.getInstance().secondsToHoursMinutesSeconds(Timer.getInstance().getTempoConcentrazione()) + ".") );
 
+        /* Set the break time label located in the report menu */
         reportBreakTime.setText(LanguageHandler.getInstance().getYouHaveRelaxedForString() + Time.getInstance().secondsToHoursMinutesSeconds(Timer.getInstance().getTempoPausa())  + ".");
         Timer.getInstance().tempoPausaProperty().addListener( observable ->
                 reportBreakTime.setText(LanguageHandler.getInstance().getYouHaveRelaxedForString() + Time.getInstance().secondsToHoursMinutesSeconds(Timer.getInstance().getTempoPausa())  + ".") );
 
 
 
-
-        /* traduzione */
+        /* English to Italian translation and vice versa */
         LanguageHandler.getInstance().preferredLanguageProperty().addListener( observable -> {
 
             /* activity buttons */
@@ -151,7 +159,7 @@ public class Controller implements Initializable {
             autoRunPomodoro.setText(LanguageHandler.getInstance().getAutoRunPomodoroString());
             autoRunBreaks.setText(LanguageHandler.getInstance().getAutoRunBreaksString());
             languageMenuCategoryLabel.setText(LanguageHandler.getInstance().getLanguageString());
-            audioEffectSelector.setText(LanguageHandler.getInstance().getAudioStringByID(ControllerHandler.getInstance().getSelectedAudioEffect())); // TODO: 11/07/2022
+            audioEffectSelector.setText(LanguageHandler.getInstance().getAudioStringByID(ControllerHandler.getInstance().getSelectedAudioEffect()));
             defaultAudioMenuItem.setText(LanguageHandler.getInstance().getAudioStringByID(0));
             bellAudioMenuItem.setText(LanguageHandler.getInstance().getAudioStringByID(1));
             birdAudioMenuItem.setText(LanguageHandler.getInstance().getAudioStringByID(2));
@@ -212,45 +220,48 @@ public class Controller implements Initializable {
 
     /* --- METHODS --- */
 
-    // Focus, Short Break or Long Break activity buttons on click
-    @FXML private void focusSwitchButtonOnClick()      {
-        Activity.getInstance().onFocusActivity();
+    /* Focus, Short Break or Long Break activity buttons on click */
+    @FXML private void focusSwitchButtonOnClick() {
+        Activity.getInstance().onFocusActivity();   // run Pomodoro activity
     }
     @FXML private void shortBreakSwitchButtonOnClick() {
-        Activity.getInstance().onShortBreakActivity();
+        Activity.getInstance().onShortBreakActivity();  // run Short Break activity
     }
-    @FXML private void longBreakSwitchButtonOnClick()  {
-        Activity.getInstance().onLongBreakActivity();
+    @FXML private void longBreakSwitchButtonOnClick() {
+        Activity.getInstance().onLongBreakActivity();   // run Long Break activity
     }
 
-    // Start/Pause Button on click
+
+    /* Start timer button on click */
     @FXML private void startTimerButtonOnClick() {
         ControllerHandler.getInstance().onStartTimerButton();
     }
 
-    // Audio enabler CheckBox on click
+
+    /* Enable audio preference */
     @FXML private void audioEnableCheckboxOnClick() {
         ControllerHandler.getInstance().onAudioEnableCheckbox(audioEnableCheckbox.isSelected()); }
 
-    // Audio selection
-    @FXML void setDefaultAudio() {
-        ControllerHandler.getInstance().setSelectedAudioEffect(0);
-        audioEffectSelector.setText(LanguageHandler.getInstance().getAudioStringByID(0));
+    /* Audio effect on click (inside the MenuButton) */
+    @FXML private void setDefaultAudio() {
+        ControllerHandler.getInstance().setSelectedAudioEffect(0);                          // set selected audio effect
+        audioEffectSelector.setText(LanguageHandler.getInstance().getAudioStringByID(0));   // translate the title of the audio effect in the selected language
     } // DEFAULT
-    @FXML void setCustomAudio1() {
+    @FXML private void setCustomAudio1() {
         ControllerHandler.getInstance().setSelectedAudioEffect(1);
         audioEffectSelector.setText(LanguageHandler.getInstance().getAudioStringByID(1));
     } // BELL
-    @FXML void setCustomAudio2() {
+    @FXML private void setCustomAudio2() {
         ControllerHandler.getInstance().setSelectedAudioEffect(2);
         audioEffectSelector.setText(LanguageHandler.getInstance().getAudioStringByID(2));
     } // BIRD
-    @FXML void setCustomAudio3() {
+    @FXML private void setCustomAudio3() {
         ControllerHandler.getInstance().setSelectedAudioEffect(3);
         audioEffectSelector.setText(LanguageHandler.getInstance().getAudioStringByID(3));
     } // DIGITAL
 
-    // Autorun Pomodoro and Break activities CheckBox on click
+
+    /* Autorun Pomodoro and Break activities CheckBox on click */
     @FXML private void autoRunPomodoroOnClick() {
         ControllerHandler.getInstance().onAutoRunPomodoro(autoRunPomodoro.isSelected());
     }
@@ -258,10 +269,11 @@ public class Controller implements Initializable {
         ControllerHandler.getInstance().onAutoRunBreaks(autoRunBreaks.isSelected());
     }
 
-    // Extends Preferences and Report menus
+
+    /* Extend and Style the Preferences or Report menus */
     @FXML void showPreferences() {
 
-        // PREFERENCES:OFF, REPORT:OFF
+        // PREFERENCES:OFF, REPORT:OFF -> set Style and show the preferences menu
         if(!preferencesVbox.isVisible() && !reportVbox.isVisible()) {
 
             // COLORS
@@ -284,10 +296,12 @@ public class Controller implements Initializable {
 
             }
 
+            preferencesVbox.setVisible(true);   // show preferences
 
-
-            preferencesVbox.setVisible(true);
-            if(!SceneHandler.getInstance().getStage().isMaximized()) { SceneHandler.getInstance().getStage().setHeight(SceneHandler.getInstance().getStage().getMaxHeight()); }
+            /* If the window isn't maximized, resize the window */
+            if(!SceneHandler.getInstance().getStage().isMaximized()) {
+                SceneHandler.getInstance().getStage().setHeight(SceneHandler.getInstance().getStage().getMaxHeight());
+            }
 
         }
 
@@ -432,12 +446,13 @@ public class Controller implements Initializable {
 
     }
 
-    // Sets Preferred Language
+
+    /* Set the preferred language */
     @FXML void setPreferredLanguageEnglish() {
-        LanguageHandler.getInstance().setPreferredLanguage(EnglishDictionary.getInstance().LANGUAGE_ID);
+        LanguageHandler.getInstance().setPreferredLanguage(EnglishDictionary.getInstance().LANGUAGE_ID);    // set English as preferred language
     }
     @FXML void setPreferredLanguageItalian() {
-        LanguageHandler.getInstance().setPreferredLanguage(ItalianDictionary.getInstance().LANGUAGE_ID);
+        LanguageHandler.getInstance().setPreferredLanguage(ItalianDictionary.getInstance().LANGUAGE_ID);    // set Italian as preferred language
     }
 
 

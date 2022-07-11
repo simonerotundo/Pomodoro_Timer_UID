@@ -1,4 +1,4 @@
-package com.example.timer_test_24062022;
+package com.example.PomodoroTimer_UID;
 
 import javafx.beans.property.SimpleIntegerProperty;
 import javafx.animation.Animation;
@@ -35,7 +35,7 @@ public class Timer {
 
 
     // FOCUS TIME
-    public SimpleIntegerProperty tempoConcentrazione = new SimpleIntegerProperty(2*60*42);  // !!! EDIT ME (0)
+    public SimpleIntegerProperty tempoConcentrazione = new SimpleIntegerProperty(0);
     public SimpleIntegerProperty tempoConcentrazioneProperty() {
         return tempoConcentrazione;
     }
@@ -70,6 +70,8 @@ public class Timer {
         // For every second that passes ..
         timeline = new Timeline(new KeyFrame(Duration.seconds(1),
                 e -> {
+
+
 
                     // .. if the Timer has not run out ..
                     if(tempo.get() > 0) {

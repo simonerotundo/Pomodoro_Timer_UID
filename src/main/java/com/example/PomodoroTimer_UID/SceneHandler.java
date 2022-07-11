@@ -1,4 +1,4 @@
-package com.example.timer_test_24062022;
+package com.example.PomodoroTimer_UID;
 
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -40,7 +40,7 @@ public class SceneHandler {
         stage.setTitle(LanguageHandler.getInstance().APPLICATION_TITLE);                            // imposto il titolo della finestra
         stage.setMinWidth(MIN_WIDTH); stage.setMinHeight(MIN_HEIGHT);                               // indico la dimensione minima della finestra
         stage.setMaxWidth(MAX_WIDTH); stage.setMaxHeight(MAX_HEIGHT);                               // indico la dimensione minima della finestra
-        stage.setResizable(true);                                                                   // rendo lo stage ridimensionabile dall'utente
+        stage.setResizable(false);                                                                   // rendo lo stage ridimensionabile dall'utente
 
         scene.getStylesheets().add("/style.css");                                                   // importo il foglio di stile
         scene.setOnKeyPressed( ke -> ControllerHandler.getInstance().shortcuts(ke) );               // gestisco le shortcuts da tastiera

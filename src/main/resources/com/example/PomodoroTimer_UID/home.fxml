@@ -17,7 +17,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="main-container" fx:id="baseAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="567.0" prefWidth="357.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.timer_test_24062022.Controller">
+<AnchorPane id="main-container" fx:id="baseAnchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="567.0" prefWidth="357.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.PomodoroTimer_UID.Controller">
    <children>
       <VBox prefHeight="567.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
@@ -86,6 +86,9 @@
                                              <font>
                                                 <Font name="Fira Code SemiBold" size="75.0" />
                                              </font>
+                                             <StackPane.margin>
+                                                <Insets bottom="6.0" top="6.0" />
+                                             </StackPane.margin>
                                           </Label>
                                        </children>
                                     </StackPane>

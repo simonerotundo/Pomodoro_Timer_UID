@@ -1,4 +1,4 @@
-package com.example.timer_test_24062022;
+package com.example.PomodoroTimer_UID;
 
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.beans.property.SimpleIntegerProperty;

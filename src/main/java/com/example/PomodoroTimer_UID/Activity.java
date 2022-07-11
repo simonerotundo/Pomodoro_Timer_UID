@@ -1,49 +1,46 @@
-package com.example.timer_test_24062022;
+package com.example.PomodoroTimer_UID;
 
 public class Activity {
 
+    /* Singleton */
     private static Activity instance = null;
-    public static Activity getInstance(){
+    public static Activity getInstance() {
         if (instance==null)
             instance = new Activity();
         return instance;
     }
 
-    int FOCUS_TEST       = 1;
-    int SHORT_BREAK_TEST = 2;
-    int LONG_BREAK_TEST  = 3;
-
 
     public void onFocusActivity() {
 
-        final int ACTIVITY_ID = 1;
-        final int FOCUS_ACTIVITY_DURATION = 25;
+        final int ACTIVITY_ID = 1;                  // Activity ID
+        final int FOCUS_ACTIVITY_DURATION = 25;     // Activity duration (in minutes)
 
+        /* If an activity is running (timer is running out) .. */
         if(ControllerHandler.getInstance().getTimerAlreadyStarted()) {
 
-            boolean confirmSwitch = ActivityHandler.getInstance().showAlert();
+            boolean confirmSwitch = ActivityHandler.getInstance().showAlert();  // Show an alert which asks you if you really want to interrupt the current activity
+
+            /* If you want to skip to Pomodoro .. */
             if(confirmSwitch) {
 
-                ActivityHandler.getInstance().setCurrentActivity(1);
-                Timer.getInstance().pauseTimer();
-                ControllerHandler.getInstance().setTimerAlreadyStarted(false);
-
-
-                Timer.getInstance().setTempo(Time.getInstance().minutesToSeconds(FOCUS_ACTIVITY_DURATION));
-
-                ControllerHandler.getInstance().updateTimerLabelText(); // 1 - una funzione che setta questo (oppure fare direttamente il setTempo)
-                ControllerHandler.getInstance().updateStartButtonTextToStart();
+                ActivityHandler.getInstance().setCurrentActivity(ACTIVITY_ID);                              // .. set the current activity to 1 (Pomodoro)
+                Timer.getInstance().pauseTimer();                                                           // .. interrupt timer
+                ControllerHandler.getInstance().setTimerAlreadyStarted(false);                              // .. set the timer's state to "pause"
+                Timer.getInstance().setTempo(Time.getInstance().minutesToSeconds(FOCUS_ACTIVITY_DURATION)); // .. set the timer to a Pomodoro activity duration (25 minutes)
+                ControllerHandler.getInstance().updateTimerLabelText();                                     // .. update the timer label text
+                ControllerHandler.getInstance().updateStartButtonTextToStart();                             // .. update the text of the Start/Pause button with "START"
 
             }
 
         }
+
+        /* If there is no activity running .. */
         else {
 
-            ActivityHandler.getInstance().setCurrentActivity(ACTIVITY_ID);
-
-            Timer.getInstance().setTempo(Time.getInstance().minutesToSeconds(FOCUS_ACTIVITY_DURATION));
-
-            ControllerHandler.getInstance().updateTimerLabelText();
+            ActivityHandler.getInstance().setCurrentActivity(ACTIVITY_ID);                                  // .. set the current activity to 1 (Pomodoro)
+            Timer.getInstance().setTempo(Time.getInstance().minutesToSeconds(FOCUS_ACTIVITY_DURATION));     // .. set the timer to a Pomodoro activity duration (25 minutes)
+            ControllerHandler.getInstance().updateTimerLabelText();                                         // .. update the timer label text
 
         }
 
@@ -66,7 +63,7 @@ public class Activity {
 
                 Timer.getInstance().setTempo(Time.getInstance().minutesToSeconds(SHORTBREAK_ACTIVITY_DURATION));
 
-                ControllerHandler.getInstance().updateTimerLabelText(); // 1 - una funzione che setta questo (oppure fare direttamente il setTempo)
+                ControllerHandler.getInstance().updateTimerLabelText();
                 ControllerHandler.getInstance().updateStartButtonTextToStart();
 
             }
@@ -100,7 +97,7 @@ public class Activity {
 
                 Timer.getInstance().setTempo(Time.getInstance().minutesToSeconds(LONGBREAK_ACTIVITY_DURATION));
 
-                ControllerHandler.getInstance().updateTimerLabelText(); // 1 - una funzione che setta questo (oppure fare direttamente il setTempo)
+                ControllerHandler.getInstance().updateTimerLabelText();
                 ControllerHandler.getInstance().updateStartButtonTextToStart();
 
             }

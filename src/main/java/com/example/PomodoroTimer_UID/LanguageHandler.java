@@ -1,9 +1,10 @@
-package com.example.timer_test_24062022;
+package com.example.PomodoroTimer_UID;
 
 import javafx.beans.property.SimpleStringProperty;
 
 public class LanguageHandler {
 
+    /* Singleton */
     private static LanguageHandler instance = null;
     public static LanguageHandler getInstance(){
         if (instance==null)
@@ -11,6 +12,11 @@ public class LanguageHandler {
         return instance;
 
     }
+
+
+
+    /* *** THIS CLASS TRANSLATE EVERY STRING USED IN THIS APPLICATION FROM ITALIAN TO ENGLISH AND VICE VERSA *** */
+
 
 
     /* Language Picker */
@@ -36,10 +42,10 @@ public class LanguageHandler {
     final String EMPTY_STRING = "";
 
     /* Debug */
-    final int POMODORO_ID = 0;
-    final int SHORT_BREAK_ID = 1;
-    final int LONG_BREAK_ID = 2;
-    final String NEXT_ACTIVITY = "Starting ";
+    final int POMODORO_ID         = 0;
+    final int SHORT_BREAK_ID      = 1;
+    final int LONG_BREAK_ID       = 2;
+    final String NEXT_ACTIVITY    = "Starting ";
     final String ACTIVITY_NAMES[] = { "Pomodoro", "Short Break", "Long Break" };
 
 
@@ -72,6 +78,7 @@ public class LanguageHandler {
         return EnglishDictionary.getInstance().LONG_BREAK;
 
     }
+
 
     /* start/pause button */
     public String getPlayPauseString(String currentString) {
@@ -111,6 +118,7 @@ public class LanguageHandler {
 
     }
 
+
     /* zona counter dei pomodori */
     public String getTimeToFocusString() {
 
@@ -130,6 +138,7 @@ public class LanguageHandler {
         return EnglishDictionary.getInstance().TIME_TO_BREAK;
 
     }
+
 
     /* preferences */
     public String getPreferenceString() {
@@ -282,6 +291,7 @@ public class LanguageHandler {
 
     }
 
+
     /* measurement units */
     public String getTimeUnitsString(int seconds) { // TODO: 10/07/2022 se il tempo è superiore ad un minuto, mi restituisce il tempo in minuti (da fare anche con le ore)
         return "";        
@@ -298,8 +308,6 @@ public class LanguageHandler {
         return EnglishDictionary.getInstance().SECONDS;
 
     }
-
-
 
 
     /* alert */
