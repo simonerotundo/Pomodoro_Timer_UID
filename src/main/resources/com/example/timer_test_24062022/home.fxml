@@ -206,7 +206,7 @@
                   </HBox>
                   <StackPane prefHeight="150.0" prefWidth="200.0">
                      <children>
-                        <VBox id="preferences-menu" fx:id="preferencesVbox" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" visible="false">
+                        <VBox id="preferences-menu" fx:id="preferencesVbox" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="300.0" prefWidth="400.0">
                            <children>
                               <AnchorPane id="menu-item" layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="357.0">
                                  <children>
@@ -291,7 +291,7 @@
                               </AnchorPane>
                               <AnchorPane id="menu-item" prefHeight="30.0" prefWidth="357.0">
                                  <children>
-                                    <StackPane prefHeight="200.0" prefWidth="220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
+                                    <StackPane prefHeight="18.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
                                           <CheckBox fx:id="autoRunPomodoro" mnemonicParsing="false" onAction="#autoRunPomodoroOnClick" prefHeight="22.0" prefWidth="200.0" text="AutoRun Pomodoro">
                                              <cursor>
@@ -304,7 +304,7 @@
                               </AnchorPane>
                               <AnchorPane id="menu-item" prefHeight="30.0" prefWidth="357.0">
                                  <children>
-                                    <StackPane prefHeight="200.0" prefWidth="220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
+                                    <StackPane prefHeight="18.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
                                           <CheckBox fx:id="autoRunBreaks" mnemonicParsing="false" onAction="#autoRunBreaksOnClick" prefHeight="18.0" prefWidth="200.0" text="AutoRun Breaks">
                                              <cursor>
@@ -386,7 +386,7 @@
                               </AnchorPane>
                            </children>
                         </VBox>
-                        <VBox id="report-menu" fx:id="reportVbox" prefHeight="200.0" prefWidth="100.0">
+                        <VBox id="report-menu" fx:id="reportVbox" prefHeight="200.0" prefWidth="100.0" visible="false">
                            <children>
                               <AnchorPane id="menu-item" prefHeight="30.0" prefWidth="357.0">
                                  <children>
@@ -406,6 +406,9 @@
                                        </children>
                                     </StackPane>
                                  </children>
+                                 <VBox.margin>
+                                    <Insets top="32.0" />
+                                 </VBox.margin>
                               </AnchorPane>
                               <AnchorPane prefHeight="4.0" prefWidth="357.0">
                                  <children>
@@ -414,25 +417,12 @@
                               </AnchorPane>
                               <AnchorPane prefHeight="20.0" prefWidth="357.0">
                                  <children>
-                                    <StackPane layoutY="-99.0" prefHeight="71.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <children>
-                                          <Label id="focus-time-label" fx:id="reportFocusTime" alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="357.0" text="Focus time:" textAlignment="CENTER" />
-                                       </children>
-                                    </StackPane>
+                                    <Label id="focus-time-label" fx:id="reportFocusTime" alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="357.0" text="Focus time:" textAlignment="CENTER" wrapText="true" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="10.0" layoutY="73.0" prefHeight="20.0" prefWidth="357.0">
                                  <children>
-                                    <StackPane prefHeight="37.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                                       <children>
-                                          <Label id="break-time-label" fx:id="reportBreakTime" alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="421.0" text="Break time:" textAlignment="CENTER" />
-                                       </children>
-                                    </StackPane>
-                                 </children>
-                              </AnchorPane>
-                              <AnchorPane prefHeight="200.0" prefWidth="200.0">
-                                 <children>
-                                    <StackPane prefHeight="150.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                                    <Label id="break-time-label" fx:id="reportBreakTime" alignment="CENTER" contentDisplay="CENTER" prefHeight="54.0" prefWidth="357.0" text="Break time:" textAlignment="CENTER" wrapText="true" AnchorPane.bottomAnchor="-54.0" AnchorPane.leftAnchor="24.0" AnchorPane.rightAnchor="24.0" AnchorPane.topAnchor="0.0" />
                                  </children>
                               </AnchorPane>
                            </children>

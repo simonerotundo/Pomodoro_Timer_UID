@@ -37,9 +37,9 @@ public class EnglishDictionary {
     final String PREFERENCES = "Preferences";
     final String AUDIO = "Audio";
     final String SET_AUDIO = "Set audio";
-    final String AUTORUN_POMODORO = "Autostart Pomodoro";
-    final String AUTORUN_BREAKS = "Autostart Breaks";
-    final String FUNCTIONALS = "Functionals";
+    final String FUNCTIONALS = "Autostart";
+    final String AUTORUN_POMODORO = "Pomodoros";
+    final String AUTORUN_BREAKS = "Breaks";
     final String LANGUAGE = "Language";
 
 

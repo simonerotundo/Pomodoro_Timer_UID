@@ -35,7 +35,7 @@ public class Timer {
 
 
     // FOCUS TIME
-    public SimpleIntegerProperty tempoConcentrazione = new SimpleIntegerProperty(0);
+    public SimpleIntegerProperty tempoConcentrazione = new SimpleIntegerProperty(2*60*42);  // !!! EDIT ME (0)
     public SimpleIntegerProperty tempoConcentrazioneProperty() {
         return tempoConcentrazione;
     }

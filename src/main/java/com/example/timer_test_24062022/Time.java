@@ -53,7 +53,7 @@ public class Time {
 
             output += minutesElapsed + " ";
             if(LanguageHandler.getInstance().getPreferredLanguage() == ItalianDictionary.getInstance().LANGUAGE_ID) {
-                if(hoursElapsed == 1) {
+                if(minutesElapsed == 1) {
                     output += ItalianDictionary.getInstance().MINUTE;
                 }
                 else {
@@ -61,7 +61,7 @@ public class Time {
                 }
             }
             else if (LanguageHandler.getInstance().getPreferredLanguage() == EnglishDictionary.getInstance().LANGUAGE_ID) {
-                if(hoursElapsed == 1) {
+                if(minutesElapsed == 1) {
                     output += EnglishDictionary.getInstance().MINUTE;
                 }
                 else {
@@ -77,7 +77,7 @@ public class Time {
 
                 // traduco l'unità di misura
                 if(LanguageHandler.getInstance().getPreferredLanguage() == ItalianDictionary.getInstance().LANGUAGE_ID) {
-                    if(hoursElapsed == 1) {
+                    if(minutesElapsed == 1) {
                         output += ItalianDictionary.getInstance().MINUTE;
                     }
                     else {
@@ -85,7 +85,7 @@ public class Time {
                     }
                 }
                 else if (LanguageHandler.getInstance().getPreferredLanguage() == EnglishDictionary.getInstance().LANGUAGE_ID) {
-                    if(hoursElapsed == 1) {
+                    if(minutesElapsed == 1) {
                         output += EnglishDictionary.getInstance().MINUTE;
                     }
                     else {
@@ -102,7 +102,7 @@ public class Time {
 
         output += secondsElapsed + " ";
         if(LanguageHandler.getInstance().getPreferredLanguage() == ItalianDictionary.getInstance().LANGUAGE_ID) {
-            if(hoursElapsed == 1) {
+            if(secondsElapsed == 1) {
                 output += ItalianDictionary.getInstance().SECOND;
             }
             else {
@@ -110,7 +110,7 @@ public class Time {
             }
         }
         else if (LanguageHandler.getInstance().getPreferredLanguage() == EnglishDictionary.getInstance().LANGUAGE_ID) {
-            if(hoursElapsed == 1) {
+            if(secondsElapsed == 1) {
                 output += EnglishDictionary.getInstance().SECOND;
             }
             else {

@@ -37,9 +37,9 @@ public class ItalianDictionary {
     final String PREFERENCES = "Preferenze";
     final String AUDIO = "Audio";
     final String SET_AUDIO = "Seleziona";
-    final String AUTORUN_POMODORO = "Autoesegui pomodoro";
-    final String AUTORUN_BREAKS = "Autoesegui le pause";
-    final String FUNCTIONALS = "Funzionali";
+    final String FUNCTIONALS = "Avvia automaticamente";
+    final String AUTORUN_POMODORO = "Pomodori";
+    final String AUTORUN_BREAKS = "Pause";
     final String LANGUAGE = "Lingua";
 
 
