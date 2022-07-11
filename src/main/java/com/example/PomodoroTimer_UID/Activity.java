@@ -11,6 +11,7 @@ public class Activity {
     }
 
 
+    /* Start Focus activity */
     public void onFocusActivity() {
 
         final int ACTIVITY_ID = 1;                  // Activity ID
@@ -45,6 +46,9 @@ public class Activity {
         }
 
     }       // ID: 1
+
+
+    /* Start Short Break activity */
     public void onShortBreakActivity() {
 
         final int ACTIVITY_ID = 2;
@@ -80,6 +84,9 @@ public class Activity {
         }
 
     }  // ID: 2
+
+
+    /* Start Long Break activity */
     public void onLongBreakActivity() {
 
         final int ACTIVITY_ID = 3;

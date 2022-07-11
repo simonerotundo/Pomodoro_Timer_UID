@@ -248,16 +248,16 @@ public class Controller implements Initializable {
         audioEffectSelector.setText(LanguageHandler.getInstance().getAudioStringByID(0));   // translate the title of the audio effect in the selected language
     } // DEFAULT
     @FXML private void setCustomAudio1() {
-        ControllerHandler.getInstance().setSelectedAudioEffect(1);
-        audioEffectSelector.setText(LanguageHandler.getInstance().getAudioStringByID(1));
+        ControllerHandler.getInstance().setSelectedAudioEffect(1);                          // set selected audio effect
+        audioEffectSelector.setText(LanguageHandler.getInstance().getAudioStringByID(1));   // translate the title of the audio effect in the selected language
     } // BELL
     @FXML private void setCustomAudio2() {
-        ControllerHandler.getInstance().setSelectedAudioEffect(2);
-        audioEffectSelector.setText(LanguageHandler.getInstance().getAudioStringByID(2));
+        ControllerHandler.getInstance().setSelectedAudioEffect(2);                          // set selected audio effect
+        audioEffectSelector.setText(LanguageHandler.getInstance().getAudioStringByID(2));   // translate the title of the audio effect in the selected language
     } // BIRD
     @FXML private void setCustomAudio3() {
-        ControllerHandler.getInstance().setSelectedAudioEffect(3);
-        audioEffectSelector.setText(LanguageHandler.getInstance().getAudioStringByID(3));
+        ControllerHandler.getInstance().setSelectedAudioEffect(3);                          // set selected audio effect
+        audioEffectSelector.setText(LanguageHandler.getInstance().getAudioStringByID(3));   // translate the title of the audio effect in the selected language
     } // DIGITAL
 
 
@@ -327,7 +327,7 @@ public class Controller implements Initializable {
 
             }
 
-
+            /* hide vbox and show preferences */
             reportVbox.setVisible(false);
             preferencesVbox.setVisible(true);
 
@@ -385,6 +385,7 @@ public class Controller implements Initializable {
 
             }
 
+            /* show reports */
             reportVbox.setVisible(true);
             if(!SceneHandler.getInstance().getStage().isMaximized()) { SceneHandler.getInstance().getStage().setHeight(SceneHandler.getInstance().getStage().getMaxHeight()); }
 
@@ -412,6 +413,7 @@ public class Controller implements Initializable {
 
             }
 
+            /* hide preferences and show reports */
             preferencesVbox.setVisible(false);
             reportVbox.setVisible(true);
 
@@ -439,6 +441,7 @@ public class Controller implements Initializable {
 
             }
 
+            /* hide report */
             reportVbox.setVisible(false);
             if(!SceneHandler.getInstance().getStage().isMaximized()) { SceneHandler.getInstance().getStage().setHeight(SceneHandler.getInstance().getStage().getMinHeight()); }
             
@@ -454,6 +457,5 @@ public class Controller implements Initializable {
     @FXML void setPreferredLanguageItalian() {
         LanguageHandler.getInstance().setPreferredLanguage(ItalianDictionary.getInstance().LANGUAGE_ID);    // set Italian as preferred language
     }
-
 
 }

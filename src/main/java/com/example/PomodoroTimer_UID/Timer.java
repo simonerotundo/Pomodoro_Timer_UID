@@ -8,6 +8,7 @@ import javafx.util.Duration;
 
 public class Timer {
 
+    /* Singleton */
     private static Timer instance = null;
     public static Timer getInstance(){
 
@@ -18,6 +19,9 @@ public class Timer {
 
     }
 
+
+
+    /* Timer duration (in seconds) */
     public SimpleIntegerProperty tempo = new SimpleIntegerProperty(0);
     public SimpleIntegerProperty tempoProperty() {
         return tempo;
@@ -34,7 +38,7 @@ public class Timer {
 
 
 
-    // FOCUS TIME
+    /* Time spent on focusing */
     public SimpleIntegerProperty tempoConcentrazione = new SimpleIntegerProperty(0);
     public SimpleIntegerProperty tempoConcentrazioneProperty() {
         return tempoConcentrazione;
@@ -42,13 +46,10 @@ public class Timer {
     public int getTempoConcentrazione() {
         return tempoConcentrazione.get();
     }
-    public void setTempoConcentrazione(int tempoConcentrazione) {
-        this.tempoConcentrazione.set(tempoConcentrazione);
-    }
     private void incrementTempoConcentrazione() { tempoConcentrazione.set(tempoConcentrazione.get()+1); }
 
 
-    // BREAK TIME
+    /* Time spent on Break */
     public SimpleIntegerProperty tempoPausa = new SimpleIntegerProperty(0);
     public SimpleIntegerProperty tempoPausaProperty() {
         return tempoPausa;
@@ -56,35 +57,30 @@ public class Timer {
     public int getTempoPausa() {
         return tempoPausa.get();
     }
-    public void setTempoPausa(int tempoPausa) {
-        this.tempoPausa.set(tempoPausa);
-    }
     private void incrementTempoPausa() { tempoPausa.set(tempoPausa.get()+1); }
 
 
     private Timeline timeline;  // Timeline initialization
 
-    // Starts the Timer
+    /* Start the Timer */
     public void startTimer(){
 
         // For every second that passes ..
         timeline = new Timeline(new KeyFrame(Duration.seconds(1),
                 e -> {
 
-
-
                     // .. if the Timer has not run out ..
                     if(tempo.get() > 0) {
-                        decrementTempo();                                       // .. decrement a second
+                        decrementTempo();                       // .. decrement a second
 
                         // if it is a Pomodoro ..
                         if(ActivityHandler.getInstance().itIsAPomodoro()) {
-                            incrementTempoConcentrazione();                     // .. increment Focus Time
+                            incrementTempoConcentrazione();     // .. increment Focus Time
                         }
 
-                        // if not (it is a Break) ..
+                        // if it is not (it is a Break) ..
                         else {
-                            incrementTempoPausa();                              // .. increment Break Time
+                            incrementTempoPausa();              // .. increment Break Time
                         }
                     }
 
@@ -96,54 +92,55 @@ public class Timer {
                             Audio.getInstance().playAudio();    // .. play the chosen sound effect
                         }
 
-                        // AUTORUN
-                        Timer.getInstance().pauseTimer();
-                        ControllerHandler.getInstance().setTimerAlreadyStarted(false);
+                        Timer.getInstance().pauseTimer();                               // .. pause the timer
+                        ControllerHandler.getInstance().setTimerAlreadyStarted(false);  // .. set that the timer has expired
 
+                        /* if the activity that has just ended was a pomodoro .. */
                         if(ActivityHandler.getInstance().itIsAPomodoro()) {
 
-                            // aumento il numero di pomodori
-                            ControllerHandler.getInstance().incrementNumberOfPomodoros();
+                            ControllerHandler.getInstance().incrementNumberOfPomodoros();   // .. increase number of pomodoros
 
-
+                            /* if the autorun breaks is set to enable .. */
                             if (ControllerHandler.getInstance().getAutoRunBreaks()) {
 
-                                /* ENABLED */
-                                ActivityHandler.getInstance().startNextActivity();
-
-                                Timer.getInstance().startTimer();
-                                ControllerHandler.getInstance().setTimerAlreadyStarted(true);
+                                ActivityHandler.getInstance().startNextActivity();              // .. switch to the next activity
+                                Timer.getInstance().startTimer();                               // .. start the timer
+                                ControllerHandler.getInstance().setTimerAlreadyStarted(true);   // .. set that the timer is running
 
                             }
+
+                            /* if the autorun breaks is set to disable .. */
                             else {
 
-                                /* DISABLED */
-                                ControllerHandler.getInstance().updateStartButtonTextToStart();
-                                ActivityHandler.getInstance().startNextActivity();
+                                ControllerHandler.getInstance().updateStartButtonTextToStart(); // .. switch to the next activity
+                                ActivityHandler.getInstance().startNextActivity();              // .. start the new activity
 
                             }
 
                         }
+
+                        /* if the activity that has just ended was a break ..  */
                         else {
 
+                            /* if the autorun pomodoros is set to enable .. */
                             if (ControllerHandler.getInstance().getAutoRunPomodoro()) {
 
-                                /* ENABLED */
-                                ActivityHandler.getInstance().startNextActivity();
+                                ActivityHandler.getInstance().startNextActivity();              // .. switch to the next activity
+                                Timer.getInstance().startTimer();                               // .. start the timer
+                                ControllerHandler.getInstance().setTimerAlreadyStarted(true);   // .. set that the timer is running
 
-                                Timer.getInstance().startTimer();
-                                ControllerHandler.getInstance().setTimerAlreadyStarted(true);
+                            }
 
-                            } else {
+                            /* if the autorun pomodoros is set to disable .. */
+                            else {
 
-                                /* DISABLED */
-                                ControllerHandler.getInstance().updateStartButtonTextToStart();
-                                ActivityHandler.getInstance().startNextActivity();
+                                ControllerHandler.getInstance().updateStartButtonTextToStart(); // .. switch to the next activity
+                                ActivityHandler.getInstance().startNextActivity();              // .. start the new activity
 
                             }
 
                         }
-                    } // altrimenti ..
+                    }
 
                 }));
 
@@ -152,7 +149,7 @@ public class Timer {
 
     }
 
-    // Pauses the Timer
+    // Pause the Timer
     public void pauseTimer(){
         timeline.pause();
     }

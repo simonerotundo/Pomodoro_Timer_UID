@@ -2,6 +2,7 @@ package com.example.PomodoroTimer_UID;
 
 public class Time {
 
+    /* Singleton */
     private static Time instance = null;
     public static Time getInstance(){
         if (instance==null)
@@ -10,9 +11,22 @@ public class Time {
     }
 
 
-    public int minutesToSeconds(int seconds) { return seconds * 60; }
 
+    /* convert minutes into seconds */
+    public int minutesToSeconds(int minutes) { return minutes * 60; }
+
+
+    /* convert seconds into a string similar to " 3 hour, 2 minutes, 1 second" */
     public String secondsToHoursMinutesSeconds(int seconds) {
+
+        /*
+        * SOME EXAMPLE:
+        *
+        * 1 hour, 2 minutes, 3 seconds
+        * 2 minutes, 3 seconds
+        * 3 seconds
+        *
+        * */
 
         // ss -> mm
         int minutesElapsed = seconds / 60;
@@ -47,7 +61,7 @@ public class Time {
             }
         }
 
-        // se ho stampato l'ora, aggiungo una virgola e stampo i minuti anche se sono 0 -> "1 ora, 0 minuti"
+        // if added the number of hours spent, add the number of minutes spent on focus/break activity on focus/break activity
         if(output.length() > initialStringLength) {
             output += ", ";
 
@@ -70,7 +84,7 @@ public class Time {
             }
         }
 
-        // altrimenti, verifico se i minuti sono più di 0
+        // if not added the number of hours spent, if the user spent at least 1 minute, print the number of minutes spent on focus/break activity
         else {
             if(minutesElapsed > 0) {
                 output += minutesElapsed + " ";
@@ -95,7 +109,7 @@ public class Time {
             }
         }
 
-        // se ho stampato i minuti, aggiungo una virgola e stampo i secondi anche se sono 0 -> "1 minuto, 0 secondi"
+        // if not added the number of minutes spent, add the number of seconds spent on focus/break activity
         if(output.length() > initialStringLength) {
             output += ", ";
         }
@@ -118,9 +132,13 @@ public class Time {
             }
         }
 
+        // return the final string
         return output;
 
     }
+
+
+    /* Converts the number of seconds contained in (timer>tempo) into the "MM:SS" format */
     public String secondsToMinutesAndSeconds() {
 
         String formatted_MMSS = "";
@@ -146,6 +164,6 @@ public class Time {
         // Restituisce la stringa formattata correttamente
         return formatted_MMSS;
 
-    } // String formatter -> MM:SS
+    }
 
 }
