@@ -23,6 +23,7 @@ public class ItalianDictionary {
 
     /* Alert */
     final String ASK_FOR_CONFIRM = "Sei sicuro di voler interrompere l'attività corrente?";
+    final String CONFIRMATION = "Conferma";
 
     /* Buttons */
     final String START = "AVVIA";
@@ -36,8 +37,8 @@ public class ItalianDictionary {
     final String PREFERENCES = "Preferenze";
     final String AUDIO = "Audio";
     final String SET_AUDIO = "Seleziona";
-    final String AUTORUN_POMODORO = "Avvia sempre pomodoro";
-    final String AUTORUN_BREAKS = "Avvia sempre le pause";
+    final String AUTORUN_POMODORO = "Autoesegui pomodoro";
+    final String AUTORUN_BREAKS = "Autoesegui le pause";
     final String FUNCTIONALS = "Funzionali";
     final String LANGUAGE = "Lingua";
 

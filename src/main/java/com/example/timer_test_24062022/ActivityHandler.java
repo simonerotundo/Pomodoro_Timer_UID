@@ -74,10 +74,14 @@ public class ActivityHandler {
     /* show alert */
     public boolean showAlert() {
 
-        Alert a = new Alert(Alert.AlertType.CONFIRMATION);
-        a.setContentText(LanguageHandler.getInstance().getAlertConfirmationString());
+        Alert interruptActivityAlert = new Alert(Alert.AlertType.CONFIRMATION);
 
-        Optional<ButtonType> choise = a.showAndWait();
+        interruptActivityAlert.setContentText(LanguageHandler.getInstance().getAlertConfirmationString());
+        interruptActivityAlert.setHeaderText(LanguageHandler.getInstance().getConfirmationString());
+
+
+
+        Optional<ButtonType> choise = interruptActivityAlert.showAndWait();
         if(!choise.isPresent()){ return false; } // alert is exited, no button has been pressed.
         else if(choise.get() == ButtonType.OK){ return true; } //ok button is pressed
         else if(choise.get() == ButtonType.CANCEL){ return false; } // cancel button is pressed

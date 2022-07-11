@@ -1,9 +1,5 @@
 package com.example.timer_test_24062022;
 
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import java.util.Optional;
-
 public class Activity {
 
     private static Activity instance = null;
@@ -33,8 +29,7 @@ public class Activity {
                 ControllerHandler.getInstance().setTimerAlreadyStarted(false);
 
 
-                // Timer.getInstance().setTempo(Time.getInstance().secondsToMinutes(FOCUS_ACTIVITY_DURATION));
-                Timer.getInstance().setTempo(FOCUS_TEST);   // TMP ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                Timer.getInstance().setTempo(Time.getInstance().minutesToSeconds(FOCUS_ACTIVITY_DURATION));
 
                 ControllerHandler.getInstance().updateTimerLabelText(); // 1 - una funzione che setta questo (oppure fare direttamente il setTempo)
                 ControllerHandler.getInstance().updateStartButtonTextToStart();
@@ -46,8 +41,7 @@ public class Activity {
 
             ActivityHandler.getInstance().setCurrentActivity(ACTIVITY_ID);
 
-            // Timer.getInstance().setTempo(Time.getInstance().secondsToMinutes(FOCUS_ACTIVITY_DURATION));
-            Timer.getInstance().setTempo(FOCUS_TEST);   // TMP ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            Timer.getInstance().setTempo(Time.getInstance().minutesToSeconds(FOCUS_ACTIVITY_DURATION));
 
             ControllerHandler.getInstance().updateTimerLabelText();
 
@@ -57,7 +51,7 @@ public class Activity {
     public void onShortBreakActivity() {
 
         final int ACTIVITY_ID = 2;
-        final int FOCUS_ACTIVITY_DURATION = 5;
+        final int SHORTBREAK_ACTIVITY_DURATION = 5;
 
         if(ControllerHandler.getInstance().getTimerAlreadyStarted()) {
 
@@ -65,13 +59,12 @@ public class Activity {
 
             if(confirm) {
 
-                ActivityHandler.getInstance().setCurrentActivity(1);
+                ActivityHandler.getInstance().setCurrentActivity(2);
                 Timer.getInstance().pauseTimer();
                 ControllerHandler.getInstance().setTimerAlreadyStarted(false);
 
 
-                // Timer.getInstance().setTempo(Time.getInstance().secondsToMinutes(FOCUS_ACTIVITY_DURATION));
-                Timer.getInstance().setTempo(FOCUS_TEST);   // TMP ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                Timer.getInstance().setTempo(Time.getInstance().minutesToSeconds(SHORTBREAK_ACTIVITY_DURATION));
 
                 ControllerHandler.getInstance().updateTimerLabelText(); // 1 - una funzione che setta questo (oppure fare direttamente il setTempo)
                 ControllerHandler.getInstance().updateStartButtonTextToStart();
@@ -83,8 +76,7 @@ public class Activity {
 
             ActivityHandler.getInstance().setCurrentActivity(ACTIVITY_ID);
 
-            // Timer.getInstance().setTempo(Time.getInstance().secondsToMinutes(FOCUS_ACTIVITY_DURATION));
-            Timer.getInstance().setTempo(SHORT_BREAK_TEST);   // TMP ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            Timer.getInstance().setTempo(Time.getInstance().minutesToSeconds(SHORTBREAK_ACTIVITY_DURATION));
 
             ControllerHandler.getInstance().updateTimerLabelText();
 
@@ -94,7 +86,7 @@ public class Activity {
     public void onLongBreakActivity() {
 
         final int ACTIVITY_ID = 3;
-        final int FOCUS_ACTIVITY_DURATION = 15;
+        final int LONGBREAK_ACTIVITY_DURATION = 15;
 
         if(ControllerHandler.getInstance().getTimerAlreadyStarted()) {
 
@@ -106,8 +98,7 @@ public class Activity {
                 ControllerHandler.getInstance().setTimerAlreadyStarted(false);
 
 
-                // Timer.getInstance().setTempo(Time.getInstance().secondsToMinutes(FOCUS_ACTIVITY_DURATION));
-                Timer.getInstance().setTempo(LONG_BREAK_TEST);   // TMP ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                Timer.getInstance().setTempo(Time.getInstance().minutesToSeconds(LONGBREAK_ACTIVITY_DURATION));
 
                 ControllerHandler.getInstance().updateTimerLabelText(); // 1 - una funzione che setta questo (oppure fare direttamente il setTempo)
                 ControllerHandler.getInstance().updateStartButtonTextToStart();
@@ -119,8 +110,7 @@ public class Activity {
 
             ActivityHandler.getInstance().setCurrentActivity(ACTIVITY_ID);
 
-            // Timer.getInstance().setTempo(Time.getInstance().secondsToMinutes(FOCUS_ACTIVITY_DURATION));
-            Timer.getInstance().setTempo(LONG_BREAK_TEST);   // TMP ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+            Timer.getInstance().setTempo(Time.getInstance().minutesToSeconds(LONGBREAK_ACTIVITY_DURATION));
 
             ControllerHandler.getInstance().updateTimerLabelText();
 

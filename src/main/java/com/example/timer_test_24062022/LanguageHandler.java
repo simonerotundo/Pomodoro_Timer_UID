@@ -310,6 +310,15 @@ public class LanguageHandler {
         return EnglishDictionary.getInstance().ASK_FOR_CONFIRM;
 
     }
+    public String getConfirmationString() {
+
+        if(getPreferredLanguage() == ItalianDictionary.getInstance().LANGUAGE_ID) {
+            return ItalianDictionary.getInstance().CONFIRMATION;
+        }
+
+        return EnglishDictionary.getInstance().CONFIRMATION;
+
+    }
 
 
 

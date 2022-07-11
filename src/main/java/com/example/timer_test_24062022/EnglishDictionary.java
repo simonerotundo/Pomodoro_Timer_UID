@@ -23,6 +23,7 @@ public class EnglishDictionary {
 
     /* Alert */
     final String ASK_FOR_CONFIRM = "Are you sure you want to interrupt the current activity?";
+    final String CONFIRMATION = "Confirmation";
 
     /* Buttons */
     final String START = "START";

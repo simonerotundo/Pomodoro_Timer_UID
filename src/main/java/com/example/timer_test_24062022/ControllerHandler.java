@@ -182,26 +182,30 @@ public class ControllerHandler {
     // Play, Pause, Activity
     public void shortcuts(KeyEvent pressed) {
 
-        // DIGITS
+        // DIGITS -> ACTIVITIES
         if(pressed.getCode().isDigitKey()) {
 
-            // ACTIVITIES: 1->POMODORO, 2->SHORTBREAK, 3->LONGBREAK
+            // 1 -> POMODORO
             if      (pressed.getCode() == KeyCode.DIGIT1) {
                 Activity.getInstance().onFocusActivity();
             }
+
+            // 2 -> SHORT BREAK
             else if (pressed.getCode() == KeyCode.DIGIT2) {
                 Activity.getInstance().onShortBreakActivity();
             }
+
+            // 3 -> LONG BREAK
             else if (pressed.getCode() == KeyCode.DIGIT3) {
                 Activity.getInstance().onLongBreakActivity();
             }
 
         }
 
-        // LETTERS
+        // LETTERS -> PLAY/PAUSE
         else if(pressed.getCode().isLetterKey()) {
 
-            // PLAY/PAUSE ACTIVITY
+            // P -> Play/Pause Timer
             if(pressed.getCode() == KeyCode.P) {
                 onStartTimerButton();
             }

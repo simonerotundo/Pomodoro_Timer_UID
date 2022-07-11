@@ -8,9 +8,7 @@ import javafx.util.Duration;
 
 public class Timer {
 
-    private Timeline timeline;
     private static Timer instance = null;
-
     public static Timer getInstance(){
 
         if (instance==null)
@@ -64,21 +62,37 @@ public class Timer {
     private void incrementTempoPausa() { tempoPausa.set(tempoPausa.get()+1); }
 
 
+    private Timeline timeline;  // Timeline initialization
+
+    // Starts the Timer
     public void startTimer(){
 
-        // thread run
+        // For every second that passes ..
         timeline = new Timeline(new KeyFrame(Duration.seconds(1),
                 e -> {
 
+                    // .. if the Timer has not run out ..
                     if(tempo.get() > 0) {
-                        decrementTempo();    // .. decrementa di un secondo
-                        if(ActivityHandler.getInstance().itIsAPomodoro()) { incrementTempoConcentrazione(); }
-                        else { incrementTempoPausa(); }
-                    } // se il tempo non è ancora terminato ..
+                        decrementTempo();                                       // .. decrement a second
+
+                        // if it is a Pomodoro ..
+                        if(ActivityHandler.getInstance().itIsAPomodoro()) {
+                            incrementTempoConcentrazione();                     // .. increment Focus Time
+                        }
+
+                        // if not (it is a Break) ..
+                        else {
+                            incrementTempoPausa();                              // .. increment Break Time
+                        }
+                    }
+
+                    // if it is ..
                     else {
 
-                        // AUDIO
-                        if(ControllerHandler.getInstance().getEnableAudio()){ Audio.getInstance().playAudio(); }
+                        // if Audio Enabler CheckBox is checked ..
+                        if(ControllerHandler.getInstance().getEnableAudio()){
+                            Audio.getInstance().playAudio();    // .. play the chosen sound effect
+                        }
 
                         // AUTORUN
                         Timer.getInstance().pauseTimer();
@@ -135,6 +149,10 @@ public class Timer {
         timeline.play();
 
     }
-    public void pauseTimer(){ timeline.pause(); }
+
+    // Pauses the Timer
+    public void pauseTimer(){
+        timeline.pause();
+    }
 
 }

@@ -5,6 +5,9 @@
 [DONE] Auto start Pomodoros or Breaks
 [DONE] Effetti audio disattivabili
 [DONE] Shortcuts
+[DONE] Lingua a scelta tra italiano e inglese
+[DONE] Audio personalizzabile
+
 
 ------------------------------------------------------------------------------------------------------------------------
 
@@ -12,19 +15,7 @@
 [TODO] Alert quando provo a cambiare modalità mentre il timer è in esecuzione (ANCHE SE IL TIMER È IN PAUSA)
 [TODO] Stile CSS dell'alert
 
-[   PREFERENCES   ]
-[TODO] Lingua a scelta tra italiano e inglese
-[TODO] Audio personalizzabile - OK
+[TODO] RENDI LA SCENA NON MASSIMIZZABILE!
 
 
-STRINGHE
-[DONE] ACTIVITY
-[DONE] ACTIVITYHANDLER
-[DONE] APPLICATION
-[DONE] AUDIO
-[TODO] CONTROLLER           DA FARE UN FILE SOLO PER I CSS
-[DONE] CONTROLLERHANDLER
-[DONE] SCENEHANDLER
-[TODO] STRINGHANDLER        SONO DOWN
-[DONE] TIME
-[DONE] TIMER
+

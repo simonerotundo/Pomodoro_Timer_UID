@@ -117,14 +117,13 @@ public class Controller implements Initializable {
         });
         audioEffectSelector.setText(LanguageHandler.getInstance().getDefaultString());
 
-        reportFocusTime.setText(LanguageHandler.getInstance().getYouHaveFocusedForString() + " " + Timer.getInstance().getTempoConcentrazione() + " " + LanguageHandler.getInstance().getSecondsString(Timer.getInstance().getTempoConcentrazione()));
+        reportFocusTime.setText(LanguageHandler.getInstance().getYouHaveFocusedForString() + Time.getInstance().secondsToHoursMinutesSeconds(Timer.getInstance().getTempoConcentrazione()) + ".");
         Timer.getInstance().tempoConcentrazioneProperty().addListener( observable ->
-                reportFocusTime.setText(LanguageHandler.getInstance().getYouHaveFocusedForString() + " " + Timer.getInstance().getTempoConcentrazione() + " " + LanguageHandler.getInstance().getSecondsString(Timer.getInstance().getTempoConcentrazione()))
-        );
+                reportFocusTime.setText(LanguageHandler.getInstance().getYouHaveFocusedForString() + Time.getInstance().secondsToHoursMinutesSeconds(Timer.getInstance().getTempoConcentrazione()) + ".") );
 
-        reportBreakTime.setText(LanguageHandler.getInstance().getYouHaveRelaxedForString() + " " + Timer.getInstance().getTempoPausa() + " " + LanguageHandler.getInstance().getSecondsString(Timer.getInstance().getTempoPausa()));
-        Timer.getInstance().tempoPausaProperty().addListener( observable -> reportBreakTime.setText(LanguageHandler.getInstance().getYouHaveRelaxedForString() + " " + Timer.getInstance().getTempoPausa() + " " + LanguageHandler.getInstance().getSecondsString(Timer.getInstance().getTempoPausa())) );
-
+        reportBreakTime.setText(LanguageHandler.getInstance().getYouHaveRelaxedForString() + Time.getInstance().secondsToHoursMinutesSeconds(Timer.getInstance().getTempoPausa())  + ".");
+        Timer.getInstance().tempoPausaProperty().addListener( observable ->
+                reportBreakTime.setText(LanguageHandler.getInstance().getYouHaveRelaxedForString() + Time.getInstance().secondsToHoursMinutesSeconds(Timer.getInstance().getTempoPausa())  + ".") );
 
 
 
@@ -132,7 +131,7 @@ public class Controller implements Initializable {
         /* traduzione */
         LanguageHandler.getInstance().preferredLanguageProperty().addListener( observable -> {
 
-            /* activity switches */
+            /* activity buttons */
             focusSwitchButton.setText(LanguageHandler.getInstance().getPomodoroString());
             shortBreakSwitchButton.setText(LanguageHandler.getInstance().getShortBreakString());
             longBreakSwitchButton.setText(LanguageHandler.getInstance().getLongBreakString());
@@ -140,15 +139,15 @@ public class Controller implements Initializable {
             /* start/pause button */
             startPauseButton.setText(LanguageHandler.getInstance().getPlayPauseString(startPauseButton.getText()));
 
-            /* time to focus/break */
+            /* time to focus/break label */
             if(ActivityHandler.getInstance().itIsAPomodoro()) { activityTextLabel.setText(LanguageHandler.getInstance().getTimeToFocusString()); }
             else if(ActivityHandler.getInstance().itIsBreak()) { LanguageHandler.getInstance().getTimeToBreakString(); }
 
-            /* preferences */
+            /* preferences menu */
             preferencesButton.setText(LanguageHandler.getInstance().getPreferenceString());
             audioEnableCheckbox.setText(LanguageHandler.getInstance().getAudioString());
             setAudioMenuLabel.setText(LanguageHandler.getInstance().getSetAudioString() + ": ");
-            functionalsMenuCategoryLabel.setText(LanguageHandler.getInstance().getFunctionalString());
+            functionalMenuCategoryLabel.setText(LanguageHandler.getInstance().getFunctionalString());
             autoRunPomodoro.setText(LanguageHandler.getInstance().getAutoRunPomodoroString());
             autoRunBreaks.setText(LanguageHandler.getInstance().getAutoRunBreaksString());
             languageMenuCategoryLabel.setText(LanguageHandler.getInstance().getLanguageString());
@@ -157,66 +156,62 @@ public class Controller implements Initializable {
             birdAudioMenuItem.setText(LanguageHandler.getInstance().getAudioStringByID(2));
             digitalAudioMenuItem.setText(LanguageHandler.getInstance().getAudioStringByID(3));
 
-            /* report button */
+            /* report menu */
             reportButton.setText(LanguageHandler.getInstance().getReportString());
             focusAndBreakTimeMenuCategoryLabel.setText(LanguageHandler.getInstance().getFocusAndBreakTimeString());
-            reportFocusTime.setText(LanguageHandler.getInstance().getYouHaveFocusedForString() + " " + Timer.getInstance().getTempoConcentrazione() + " " + LanguageHandler.getInstance().getSecondsString(Timer.getInstance().getTempoPausa()));
-            reportBreakTime.setText(LanguageHandler.getInstance().getYouHaveRelaxedForString() + " " + Timer.getInstance().getTempoPausa() + " " + LanguageHandler.getInstance().getSecondsString(Timer.getInstance().getTempoPausa()));
+            reportFocusTime.setText(LanguageHandler.getInstance().getYouHaveFocusedForString() + Time.getInstance().secondsToHoursMinutesSeconds(Timer.getInstance().getTempoConcentrazione()) + ".");
+            reportBreakTime.setText(LanguageHandler.getInstance().getYouHaveRelaxedForString() + Time.getInstance().secondsToHoursMinutesSeconds(Timer.getInstance().getTempoPausa()) + ".");
 
         } );
-
-
-
-
 
     }
 
 
 
+    /* --- UI ELEMENTS --- */
 
-
-    /* --- GRAPHIC ELEMENTS --- */
-
+    // Main containers
     @FXML private AnchorPane baseAnchorPane;
     @FXML private AnchorPane mainAnchorPane;
 
+    // Activities, timer and main button
     @FXML private Button focusSwitchButton;
     @FXML private Button shortBreakSwitchButton;
     @FXML private Button longBreakSwitchButton;
-
     @FXML private Label timerLabel;
     @FXML private Button startPauseButton;
+
+    // Number of pomodoros, focus or break
     @FXML private Label pomodoroLabel;
     @FXML private Label activityTextLabel;
-    @FXML private CheckBox audioEnableCheckbox;
 
-
-    @FXML private Label functionalsMenuCategoryLabel;
-    @FXML private CheckBox autoRunPomodoro;
-    @FXML private CheckBox autoRunBreaks;
-    @FXML private Label languageMenuCategoryLabel;
-
+    // Preferences
     @FXML private VBox preferencesVbox;
     @FXML private Button preferencesButton;
-
-    @FXML private VBox reportVbox;
-    @FXML private Button reportButton;
-    @FXML private Label focusAndBreakTimeMenuCategoryLabel;
-    @FXML private Label reportFocusTime;
-    @FXML private Label reportBreakTime;
-
+    @FXML private Label functionalMenuCategoryLabel;
+    @FXML private CheckBox audioEnableCheckbox;
     @FXML private MenuButton audioEffectSelector;
     @FXML private Label setAudioMenuLabel;
     @FXML private MenuItem defaultAudioMenuItem;
     @FXML private MenuItem bellAudioMenuItem;
     @FXML private MenuItem birdAudioMenuItem;
     @FXML private MenuItem digitalAudioMenuItem;
+    @FXML private CheckBox autoRunPomodoro;
+    @FXML private CheckBox autoRunBreaks;
+    @FXML private Label languageMenuCategoryLabel;
+
+    // Reports
+    @FXML private VBox reportVbox;
+    @FXML private Button reportButton;
+    @FXML private Label focusAndBreakTimeMenuCategoryLabel;
+    @FXML private Label reportFocusTime;
+    @FXML private Label reportBreakTime;
 
 
 
     /* --- METHODS --- */
 
-    // click on activity buttons
+    // Focus, Short Break or Long Break activity buttons on click
     @FXML private void focusSwitchButtonOnClick()      {
         Activity.getInstance().onFocusActivity();
     }
@@ -227,16 +222,24 @@ public class Controller implements Initializable {
         Activity.getInstance().onLongBreakActivity();
     }
 
-    // start button click
+    // Start/Pause Button on click
     @FXML private void startTimerButtonOnClick() {
         ControllerHandler.getInstance().onStartTimerButton();
     }
 
-    // audio effects checkbox
+    // Audio enabler CheckBox on click
     @FXML private void audioEnableCheckboxOnClick() {
         ControllerHandler.getInstance().onAudioEnableCheckbox(audioEnableCheckbox.isSelected()); }
 
-    // auto run activity
+    // Audio selection
+    @FXML void setDefaultAudio() {
+        ControllerHandler.getInstance().setSelectedAudioEffect(0);
+    } // DEFAULT
+    @FXML void setCustomAudio1() { ControllerHandler.getInstance().setSelectedAudioEffect(1); } // BELL
+    @FXML void setCustomAudio2() { ControllerHandler.getInstance().setSelectedAudioEffect(2); } // BIRD
+    @FXML void setCustomAudio3() { ControllerHandler.getInstance().setSelectedAudioEffect(3); } // DIGITAL
+
+    // Autorun Pomodoro and Break activities CheckBox on click
     @FXML private void autoRunPomodoroOnClick() {
         ControllerHandler.getInstance().onAutoRunPomodoro(autoRunPomodoro.isSelected());
     }
@@ -244,10 +247,7 @@ public class Controller implements Initializable {
         ControllerHandler.getInstance().onAutoRunBreaks(autoRunBreaks.isSelected());
     }
 
-
-
-
-    // Preferences and Report
+    // Extends Preferences and Report menus
     @FXML void showPreferences() {
 
         // PREFERENCES:OFF, REPORT:OFF
@@ -276,7 +276,7 @@ public class Controller implements Initializable {
 
 
             preferencesVbox.setVisible(true);
-            SceneHandler.getInstance().getStage().setHeight(SceneHandler.getInstance().getStage().getMaxHeight());
+            if(!SceneHandler.getInstance().getStage().isMaximized()) { SceneHandler.getInstance().getStage().setHeight(SceneHandler.getInstance().getStage().getMaxHeight()); }
 
         }
 
@@ -331,7 +331,7 @@ public class Controller implements Initializable {
             }
 
             preferencesVbox.setVisible(false);
-            SceneHandler.getInstance().getStage().setHeight(SceneHandler.getInstance().getStage().getMinHeight());
+            if(!SceneHandler.getInstance().getStage().isMaximized()) { SceneHandler.getInstance().getStage().setHeight(SceneHandler.getInstance().getStage().getMinHeight()); }
 
         }
 
@@ -361,7 +361,7 @@ public class Controller implements Initializable {
             }
 
             reportVbox.setVisible(true);
-            SceneHandler.getInstance().getStage().setHeight(SceneHandler.getInstance().getStage().getMaxHeight());
+            if(!SceneHandler.getInstance().getStage().isMaximized()) { SceneHandler.getInstance().getStage().setHeight(SceneHandler.getInstance().getStage().getMaxHeight()); }
 
         }
 
@@ -415,26 +415,19 @@ public class Controller implements Initializable {
             }
 
             reportVbox.setVisible(false);
-            SceneHandler.getInstance().getStage().setHeight(SceneHandler.getInstance().getStage().getMinHeight());
+            if(!SceneHandler.getInstance().getStage().isMaximized()) { SceneHandler.getInstance().getStage().setHeight(SceneHandler.getInstance().getStage().getMinHeight()); }
             
         }
 
     }
 
-
-    // Audio effects
-    @FXML void setDefaultAudio() {
-        ControllerHandler.getInstance().setSelectedAudioEffect(0);
-    } // DEFAULT - BELL
-    @FXML void setCustomAudio1() { ControllerHandler.getInstance().setSelectedAudioEffect(1); } // BELL
-    @FXML void setCustomAudio2() { ControllerHandler.getInstance().setSelectedAudioEffect(2); } // BIRD
-    @FXML void setCustomAudio3() { ControllerHandler.getInstance().setSelectedAudioEffect(3); } // DIGITAL
-
-
+    // Sets Preferred Language
     @FXML void setPreferredLanguageEnglish() {
         LanguageHandler.getInstance().setPreferredLanguage(EnglishDictionary.getInstance().LANGUAGE_ID);
     }
-    @FXML void setPreferredLanguageItalian() { LanguageHandler.getInstance().setPreferredLanguage(ItalianDictionary.getInstance().LANGUAGE_ID); }
+    @FXML void setPreferredLanguageItalian() {
+        LanguageHandler.getInstance().setPreferredLanguage(ItalianDictionary.getInstance().LANGUAGE_ID);
+    }
 
 
 }

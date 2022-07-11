@@ -29,11 +29,11 @@
                            <children>
                               <AnchorPane prefHeight="62.0" prefWidth="357.0">
                                  <children>
-                                    <StackPane prefHeight="150.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <StackPane prefHeight="39.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <HBox prefHeight="88.0" prefWidth="357.0">
+                                          <HBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="88.0" prefWidth="357.0">
                                              <children>
-                                                <AnchorPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" prefHeight="200.0" prefWidth="200.0">
+                                                <AnchorPane prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                                                    <children>
                                                       <StackPane prefHeight="39.0" prefWidth="119.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
@@ -46,7 +46,7 @@
                                                       </StackPane>
                                                    </children>
                                                 </AnchorPane>
-                                                <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+                                                <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                                                    <children>
                                                       <StackPane prefHeight="39.0" prefWidth="119.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
@@ -59,7 +59,7 @@
                                                       </StackPane>
                                                    </children>
                                                 </AnchorPane>
-                                                <AnchorPane layoutX="189.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0">
+                                                <AnchorPane layoutX="189.0" layoutY="10.0" prefHeight="200.0" prefWidth="200.0" HBox.hgrow="ALWAYS">
                                                    <children>
                                                       <StackPane prefHeight="39.0" prefWidth="119.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                                          <children>
@@ -116,7 +116,7 @@
                                  <children>
                                     <AnchorPane prefHeight="0.0" prefWidth="357.0">
                                        <children>
-                                          <StackPane prefHeight="16.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <StackPane prefHeight="18.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <children>
                                                 <Label id="pomodoro-label" fx:id="pomodoroLabel" alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="548.0" text="#0">
                                                    <StackPane.margin>
@@ -135,7 +135,7 @@
                                     </AnchorPane>
                                     <AnchorPane prefHeight="36.0" prefWidth="357.0">
                                        <children>
-                                          <StackPane prefHeight="16.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                          <StackPane prefHeight="36.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                              <children>
                                                 <Label id="text-label" fx:id="activityTextLabel" alignment="TOP_CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="378.0" text="Time to focus!">
                                                    <StackPane.margin>
@@ -164,7 +164,7 @@
                <children>
                   <HBox prefHeight="100.0" prefWidth="200.0">
                      <children>
-                        <AnchorPane prefHeight="0.0" prefWidth="357.0">
+                        <AnchorPane prefHeight="0.0" prefWidth="357.0" HBox.hgrow="ALWAYS">
                            <children>
                               <StackPane prefHeight="200.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
@@ -183,7 +183,7 @@
                               </StackPane>
                            </children>
                         </AnchorPane>
-                        <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="0.0" prefWidth="357.0">
+                        <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="0.0" prefWidth="357.0" HBox.hgrow="ALWAYS">
                            <children>
                               <StackPane prefHeight="200.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                  <children>
@@ -206,7 +206,7 @@
                   </HBox>
                   <StackPane prefHeight="150.0" prefWidth="200.0">
                      <children>
-                        <VBox id="preferences-menu" fx:id="preferencesVbox" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="300.0" prefWidth="400.0">
+                        <VBox id="preferences-menu" fx:id="preferencesVbox" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="300.0" prefWidth="400.0" visible="false">
                            <children>
                               <AnchorPane id="menu-item" layoutX="10.0" layoutY="10.0" prefHeight="30.0" prefWidth="357.0">
                                  <children>
@@ -269,7 +269,7 @@
                                  <children>
                                     <StackPane prefHeight="200.0" prefWidth="220.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="50.0" AnchorPane.rightAnchor="50.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <Label id="preferences-separator-label" fx:id="functionalsMenuCategoryLabel" text="Functionals">
+                                          <Label id="preferences-separator-label" fx:id="functionalMenuCategoryLabel" text="Functionals">
                                              <StackPane.margin>
                                                 <Insets top="10.0" />
                                              </StackPane.margin>
@@ -386,7 +386,7 @@
                               </AnchorPane>
                            </children>
                         </VBox>
-                        <VBox id="report-menu" fx:id="reportVbox" prefHeight="200.0" prefWidth="100.0" visible="false">
+                        <VBox id="report-menu" fx:id="reportVbox" prefHeight="200.0" prefWidth="100.0">
                            <children>
                               <AnchorPane id="menu-item" prefHeight="30.0" prefWidth="357.0">
                                  <children>
@@ -414,9 +414,9 @@
                               </AnchorPane>
                               <AnchorPane prefHeight="20.0" prefWidth="357.0">
                                  <children>
-                                    <StackPane prefHeight="37.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                                    <StackPane layoutY="-99.0" prefHeight="71.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <Label id="focus-time-label" fx:id="reportFocusTime" text="Focus time:" />
+                                          <Label id="focus-time-label" fx:id="reportFocusTime" alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="357.0" text="Focus time:" textAlignment="CENTER" />
                                        </children>
                                     </StackPane>
                                  </children>
@@ -425,7 +425,7 @@
                                  <children>
                                     <StackPane prefHeight="37.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <Label id="break-time-label" fx:id="reportBreakTime" text="Break time:" />
+                                          <Label id="break-time-label" fx:id="reportBreakTime" alignment="CENTER" contentDisplay="CENTER" prefHeight="16.0" prefWidth="421.0" text="Break time:" textAlignment="CENTER" />
                                        </children>
                                     </StackPane>
                                  </children>
