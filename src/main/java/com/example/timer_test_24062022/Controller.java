@@ -151,6 +151,7 @@ public class Controller implements Initializable {
             autoRunPomodoro.setText(LanguageHandler.getInstance().getAutoRunPomodoroString());
             autoRunBreaks.setText(LanguageHandler.getInstance().getAutoRunBreaksString());
             languageMenuCategoryLabel.setText(LanguageHandler.getInstance().getLanguageString());
+            audioEffectSelector.setText(LanguageHandler.getInstance().getAudioStringByID(ControllerHandler.getInstance().getSelectedAudioEffect())); // TODO: 11/07/2022
             defaultAudioMenuItem.setText(LanguageHandler.getInstance().getAudioStringByID(0));
             bellAudioMenuItem.setText(LanguageHandler.getInstance().getAudioStringByID(1));
             birdAudioMenuItem.setText(LanguageHandler.getInstance().getAudioStringByID(2));
@@ -234,10 +235,20 @@ public class Controller implements Initializable {
     // Audio selection
     @FXML void setDefaultAudio() {
         ControllerHandler.getInstance().setSelectedAudioEffect(0);
+        audioEffectSelector.setText(LanguageHandler.getInstance().getAudioStringByID(0));
     } // DEFAULT
-    @FXML void setCustomAudio1() { ControllerHandler.getInstance().setSelectedAudioEffect(1); } // BELL
-    @FXML void setCustomAudio2() { ControllerHandler.getInstance().setSelectedAudioEffect(2); } // BIRD
-    @FXML void setCustomAudio3() { ControllerHandler.getInstance().setSelectedAudioEffect(3); } // DIGITAL
+    @FXML void setCustomAudio1() {
+        ControllerHandler.getInstance().setSelectedAudioEffect(1);
+        audioEffectSelector.setText(LanguageHandler.getInstance().getAudioStringByID(1));
+    } // BELL
+    @FXML void setCustomAudio2() {
+        ControllerHandler.getInstance().setSelectedAudioEffect(2);
+        audioEffectSelector.setText(LanguageHandler.getInstance().getAudioStringByID(2));
+    } // BIRD
+    @FXML void setCustomAudio3() {
+        ControllerHandler.getInstance().setSelectedAudioEffect(3);
+        audioEffectSelector.setText(LanguageHandler.getInstance().getAudioStringByID(3));
+    } // DIGITAL
 
     // Autorun Pomodoro and Break activities CheckBox on click
     @FXML private void autoRunPomodoroOnClick() {

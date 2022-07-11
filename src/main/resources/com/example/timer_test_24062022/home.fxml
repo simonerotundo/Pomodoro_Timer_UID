@@ -246,7 +246,7 @@
                                  <children>
                                     <StackPane layoutX="109.0" prefHeight="24.0" prefWidth="357.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                                        <children>
-                                          <MenuButton fx:id="audioEffectSelector" mnemonicParsing="false" popupSide="RIGHT" prefHeight="22.0" prefWidth="200.0" text="MenuButton">
+                                          <MenuButton fx:id="audioEffectSelector" alignment="CENTER" mnemonicParsing="false" popupSide="RIGHT" prefHeight="24.0" prefWidth="230.0" text="MenuButton" wrapText="true">
                                             <items>
                                               <MenuItem fx:id="defaultAudioMenuItem" mnemonicParsing="false" onAction="#setDefaultAudio" text="Default" />
                                                 <SeparatorMenuItem mnemonicParsing="false" />
@@ -260,6 +260,9 @@
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
+                                             <StackPane.margin>
+                                                <Insets left="18.0" top="2.0" />
+                                             </StackPane.margin>
                                           </MenuButton>
                                        </children>
                                     </StackPane>
@@ -344,7 +347,7 @@
                                              <children>
                                                 <StackPane prefHeight="40.0" prefWidth="85.0" HBox.hgrow="ALWAYS">
                                                    <children>
-                                                      <ImageView accessibleRole="BUTTON" fitHeight="53.0" fitWidth="40.0" onMouseClicked="#setPreferredLanguageEnglish" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_RIGHT">
+                                                      <ImageView accessibleRole="BUTTON" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#setPreferredLanguageEnglish" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_RIGHT">
                                                          <image>
                                                             <Image url="@../../../Images/united-kingdom.png" />
                                                          </image>
@@ -362,7 +365,7 @@
                                                 </StackPane>
                                                 <StackPane prefHeight="40.0" prefWidth="76.0" HBox.hgrow="ALWAYS">
                                                    <children>
-                                                      <ImageView accessibleRole="BUTTON" fitHeight="68.0" fitWidth="37.0" onMouseClicked="#setPreferredLanguageItalian" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
+                                                      <ImageView accessibleRole="BUTTON" fitHeight="40.0" fitWidth="40.0" onMouseClicked="#setPreferredLanguageItalian" pickOnBounds="true" preserveRatio="true" StackPane.alignment="CENTER_LEFT">
                                                          <image>
                                                             <Image url="@../../../Images/italy.png" />
                                                          </image>

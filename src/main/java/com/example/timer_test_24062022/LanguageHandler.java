@@ -184,13 +184,15 @@ public class LanguageHandler {
 
         }
 
-
         return audioTitles;
 
     }
     public String getAudioStringByID(int id) {
         String[] titles = getAudioArrayString();
         return titles[id];
+    }
+    public String getAudioTitleTranslation() { // TODO: 11/07/2022
+        return LanguageHandler.getInstance().getAudioStringByID(ControllerHandler.getInstance().getSelectedAudioEffect());
     }
     public String getAutoRunPomodoroString() {
 
